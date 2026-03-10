@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WSP TWIN - BUG VVIP</title>
-    
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
         * {
             margin: 0;
@@ -16,7 +13,6 @@
             font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
         }
         
-        /* LOGIN PAGE */
         .login-page {
             background: linear-gradient(145deg, #E3F2FD 0%, #BBDEFB 100%);
             min-height: 100vh;
@@ -51,11 +47,6 @@
             position: relative;
             z-index: 1;
             animation: naikBro 0.6s ease;
-        }
-        
-        @keyframes naikBro {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .login-header {
@@ -305,7 +296,6 @@
             border-radius: 10px;
         }
         
-        /* DASHBOARD PAGE */
         .dashboard-page {
             background: linear-gradient(145deg, #E3F2FD 0%, #BBDEFB 100%);
             min-height: 100vh;
@@ -528,7 +518,6 @@
             color: #FFEB3B;
         }
         
-        /* OWNER PANEL KHUSUS */
         .owner-panel-page {
             background: linear-gradient(145deg, #E3F2FD 0%, #BBDEFB 100%);
             min-height: 100vh;
@@ -645,10 +634,6 @@
             color: white;
         }
         
-        .owner-table tr:hover {
-            background: #1E293B;
-        }
-        
         .btn-accept {
             background: #4CAF50;
             color: white;
@@ -677,7 +662,6 @@
             padding: 8px 15px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 12px;
         }
         
         .create-user-form {
@@ -694,7 +678,6 @@
             border: 2px solid #334155;
             border-radius: 10px;
             color: white;
-            font-size: 14px;
         }
         
         .create-user-form button {
@@ -712,7 +695,6 @@
             background: #1E293B;
             border-radius: 10px;
             padding: 15px;
-            margin-top: 15px;
         }
         
         .active-user-item {
@@ -733,29 +715,58 @@
             box-shadow: 0 0 10px #4CAF50;
         }
         
-        /* Owner Menu Button */
-        .owner-menu-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 45px;
-            height: 45px;
-            background: #0D47A1;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 900;
-            cursor: pointer;
-            z-index: 1000;
-            border: 2px solid #FFEB3B;
+        .owner-login-modal {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
         }
         
-        .owner-menu-btn.show {
+        .owner-login-modal.show {
             display: flex;
+        }
+        
+        .owner-login-card {
+            background: #0F172A;
+            padding: 40px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 400px;
+            border: 3px solid #2196F3;
+            transform: skewX(-3deg);
+        }
+        
+        .owner-login-card h2 {
+            color: #2196F3;
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: skewX(3deg);
+        }
+        
+        .owner-login-card .input-group {
+            transform: skewX(3deg);
+        }
+        
+        .owner-login-card .btn-enter {
+            transform: skewX(3deg) translateY(-5px);
+        }
+        
+        .owner-login-card .btn-enter:hover {
+            transform: skewX(3deg) translateY(-2px);
+        }
+        
+        .owner-login-card .btn-enter:active {
+            transform: skewX(3deg) translateY(5px);
         }
         
         .back-to-dashboard {
@@ -770,15 +781,67 @@
             align-items: center;
             gap: 8px;
         }
+        
+        .owner-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: #0D47A1;
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            z-index: 2000;
+            border: 2px solid #FFEB3B;
+            transform: skewX(-5deg);
+            box-shadow: 0 5px 0 #0A0F1E;
+            gap: 2px;
+            display: none;
+        }
+        
+        .owner-btn.show {
+            display: flex;
+        }
+        
+        .owner-btn i {
+            font-size: 24px;
+            transform: skewX(5deg);
+        }
+        
+        .owner-btn span {
+            font-size: 10px;
+            transform: skewX(5deg);
+        }
     </style>
 </head>
 <body>
-    <!-- Owner Menu Button (hanya muncul untuk owner) -->
-    <div class="owner-menu-btn" id="ownerMenuBtn" onclick="goToOwnerPanel()">
+    <div class="owner-btn" id="ownerBtn" onclick="showOwnerLogin()">
         <i class="fas fa-bolt"></i>
+        <span>OWNER</span>
     </div>
     
-    <!-- LOGIN PAGE -->
+    <div class="owner-login-modal" id="ownerLoginModal">
+        <div class="owner-login-card">
+            <h2><i class="fas fa-crown"></i> OWNER ONLY</h2>
+            <div class="input-group">
+                <label>USERNAME</label>
+                <input type="text" id="ownerUsername" placeholder="masukin username owner">
+            </div>
+            <div class="input-group">
+                <label>PASSWORD</label>
+                <input type="password" id="ownerPassword" placeholder="masukin password owner">
+            </div>
+            <button class="btn-enter" onclick="verifyOwner()">MASUK</button>
+        </div>
+    </div>
+    
     <div class="login-page" id="loginPage">
         <div class="login-container">
             <div class="login-header">
@@ -787,19 +850,12 @@
             </div>
             
             <div class="login-main">
-                <!-- Left Panel -->
                 <div class="login-info">
-                    <h2>
-                        <span>WSP TWIN</span>
-                        BUG VVIP 2026
-                    </h2>
+                    <h2><span>WSP TWIN</span>BUG VVIP 2026</h2>
                     <div class="tagline">🔥 LANSUNG GAS BRO! 🔥</div>
-                    <div style="background:#0D47A1; padding:15px; border-radius:15px; text-align:center; border:1px solid #FFEB3B; color:#FFEB3B;">
-                        ⚡ POWERED BY RAPZZXPLOIT ⚡
-                    </div>
+                    <div style="background:#0D47A1; padding:15px; border-radius:15px; text-align:center; border:1px solid #FFEB3B; color:#FFEB3B;">⚡ POWERED BY RAPZZXPLOIT ⚡</div>
                 </div>
                 
-                <!-- Right Panel -->
                 <div class="login-form-panel">
                     <div class="wsp-logo">
                         <div class="logo-icon">⚡</div>
@@ -807,9 +863,7 @@
                     </div>
                     
                     <h2>LOGIN GOBLOK</h2>
-                    <div class="login-subtitle">
-                        SILAHKAN LOGIN YA <strong>ASU</strong> 🗿
-                    </div>
+                    <div class="login-subtitle">SILAHKAN LOGIN YA <strong>ASU</strong> 🗿</div>
                     
                     <div class="input-group">
                         <label>NAMA LU</label>
@@ -833,7 +887,6 @@
                 </div>
             </div>
             
-            <!-- Register Form (Hidden) -->
             <div id="registerSection" style="display: none; background:#0F172A; padding:30px; border-top:1px solid #2196F3;">
                 <h2 style="color:#2196F3; margin-bottom:20px;">REGISTER GOBLOK</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap:20px;">
@@ -852,7 +905,6 @@
                 </div>
             </div>
             
-            <!-- Waiting Approval Message -->
             <div id="waitingApproval" style="display: none; background:#0F172A; padding:40px; text-align:center; border-top:1px solid #2196F3;">
                 <i class="fas fa-clock" style="font-size:60px; color:#FFEB3B; margin-bottom:20px;"></i>
                 <h2 style="color:#2196F3; margin-bottom:15px;">MENUNGGU PERSETUJUAN OWNER</h2>
@@ -866,7 +918,6 @@
         </div>
     </div>
     
-    <!-- DASHBOARD PAGE (USER & ADMIN) -->
     <div class="dashboard-page" id="dashboardPage">
         <div class="dashboard-container">
             <div class="dashboard-header">
@@ -875,15 +926,9 @@
                     <p><i class="fas fa-calendar-alt"></i> Member since: <span id="memberSince">10/03/2026</span></p>
                 </div>
                 <div class="header-right">
-                    <div class="role-badge" id="roleBadge">
-                        <i class="fas fa-crown"></i> ROLE: <span id="userRole">MEMBER</span>
-                    </div>
-                    <div class="expiry-date">
-                        <i class="fas fa-clock"></i> Exp: <span id="expiryDate">2026-05-03</span>
-                    </div>
-                    <button class="logout-btn-header" onclick="logout()">
-                        <i class="fas fa-sign-out-alt"></i> LOGOUT
-                    </button>
+                    <div class="role-badge" id="roleBadge"><i class="fas fa-crown"></i> ROLE: <span id="userRole">MEMBER</span></div>
+                    <div class="expiry-date"><i class="fas fa-clock"></i> Exp: <span id="expiryDate">2026-05-03</span></div>
+                    <button class="logout-btn-header" onclick="logout()"><i class="fas fa-sign-out-alt"></i> LOGOUT</button>
                 </div>
             </div>
             
@@ -891,17 +936,11 @@
                 <div class="menu-grid">
                     <div class="menu-card" onclick="showBugNumber()">
                         <div class="menu-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <div class="menu-text">
-                            <h2>BUG NOMOR</h2>
-                            <p>+ Bug Nomor Target</p>
-                        </div>
+                        <div class="menu-text"><h2>BUG NOMOR</h2><p>+ Bug Nomor Target</p></div>
                     </div>
                     <div class="menu-card" onclick="showBugGroup()">
                         <div class="menu-icon"><i class="fas fa-users"></i></div>
-                        <div class="menu-text">
-                            <h2>BUG GROUP</h2>
-                            <p>+ Bug Group Target</p>
-                        </div>
+                        <div class="menu-text"><h2>BUG GROUP</h2><p>+ Bug Group Target</p></div>
                     </div>
                 </div>
                 
@@ -922,120 +961,69 @@
                                     <option value="CRASH-UNLI">∞ CRASH-UNLI</option>
                                 </select>
                             </div>
-                            <button class="send-btn" onclick="sendBug()">
-                                <i class="fas fa-rocket"></i> SEND BUG ATTACK <i class="fas fa-bolt"></i>
-                            </button>
+                            <button class="send-btn" onclick="sendBug()"><i class="fas fa-rocket"></i> SEND BUG ATTACK <i class="fas fa-bolt"></i></button>
                         </div>
                     </div>
                     <div id="bugGroupContent" style="display: none;">
-                        <div class="coming-soon">
-                            <i class="fas fa-clock"></i>
-                            <h2>COMMING SOON</h2>
-                            <p>Bug Group akan segera hadir!</p>
-                        </div>
+                        <div class="coming-soon"><i class="fas fa-clock"></i><h2>COMMING SOON</h2><p>Bug Group akan segera hadir!</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- OWNER PANEL PAGE (KHUSUS OWNER) -->
     <div class="owner-panel-page" id="ownerPanelPage">
         <div class="owner-container">
             <div class="owner-header">
                 <h1><i class="fas fa-crown" style="color:#FFEB3B;"></i> OWNER PANEL VVIP</h1>
-                <button class="back-to-dashboard" onclick="backToDashboard()">
-                    <i class="fas fa-arrow-left"></i> BACK TO DASHBOARD
-                </button>
+                <button class="back-to-dashboard" onclick="backToDashboard()"><i class="fas fa-arrow-left"></i> BACK TO DASHBOARD</button>
             </div>
             
             <div class="owner-main">
-                <!-- Stats -->
                 <div class="owner-stats-grid">
-                    <div class="owner-stat-box">
-                        <div class="number" id="totalUsers">0</div>
-                        <div class="label">TOTAL USERS</div>
-                    </div>
-                    <div class="owner-stat-box">
-                        <div class="number" id="totalActive">0</div>
-                        <div class="label">ACTIVE NOW</div>
-                    </div>
-                    <div class="owner-stat-box">
-                        <div class="number" id="pendingRequests">0</div>
-                        <div class="label">PENDING</div>
-                    </div>
-                    <div class="owner-stat-box">
-                        <div class="number" id="totalAdmins">0</div>
-                        <div class="label">ADMINS</div>
-                    </div>
+                    <div class="owner-stat-box"><div class="number" id="totalUsers">0</div><div class="label">TOTAL USERS</div></div>
+                    <div class="owner-stat-box"><div class="number" id="totalActive">0</div><div class="label">ACTIVE NOW</div></div>
+                    <div class="owner-stat-box"><div class="number" id="pendingRequests">0</div><div class="label">PENDING</div></div>
+                    <div class="owner-stat-box"><div class="number" id="totalAdmins">0</div><div class="label">ADMINS</div></div>
                 </div>
                 
-                <!-- PENDING REQUESTS SECTION -->
                 <div class="owner-section">
                     <h2><i class="fas fa-envelope" style="color:#FFEB3B;"></i> MAIL ACC - PENDING REGISTRATIONS</h2>
-                    <table class="owner-table" id="pendingTable">
-                        <thead>
-                            <tr>
-                                <th>USERNAME</th>
-                                <th>PASSWORD</th>
-                                <th>REQUEST DATE</th>
-                                <th>ACTION</th>
-                            </tr>
-                        </thead>
-                        <tbody id="pendingList">
-                            <!-- Pending requests will appear here -->
-                        </tbody>
+                    <table class="owner-table">
+                        <thead><tr><th>USERNAME</th><th>PASSWORD</th><th>REQUEST DATE</th><th>ACTION</th></tr></thead>
+                        <tbody id="pendingList"></tbody>
                     </table>
                 </div>
                 
-                <!-- USERS LIST SECTION -->
                 <div class="owner-section">
                     <h2><i class="fas fa-users"></i> ALL USERS & ADMINS</h2>
                     <table class="owner-table">
-                        <thead>
-                            <tr>
-                                <th>USERNAME</th>
-                                <th>PASSWORD</th>
-                                <th>ROLE</th>
-                                <th>EXPIRY</th>
-                                <th>ACTION</th>
-                            </tr>
-                        </thead>
-                        <tbody id="usersList">
-                            <!-- Users will appear here -->
-                        </tbody>
+                        <thead><tr><th>USERNAME</th><th>PASSWORD</th><th>ROLE</th><th>EXPIRY</th><th>ACTION</th></tr></thead>
+                        <tbody id="usersList"></tbody>
                     </table>
                 </div>
                 
-                <!-- CREATE USER SECTION -->
                 <div class="owner-section">
                     <h2><i class="fas fa-user-plus"></i> CREATE USER MANUAL</h2>
                     <div class="create-user-form">
                         <input type="text" id="newUsername" placeholder="Username">
                         <input type="text" id="newPassword" placeholder="Password">
-                        <select id="newRole">
-                            <option value="MEMBER">MEMBER</option>
-                            <option value="ADMINS">ADMINS</option>
-                        </select>
+                        <select id="newRole"><option value="MEMBER">MEMBER</option><option value="ADMINS">ADMINS</option></select>
                         <button onclick="createUser()">CREATE</button>
                     </div>
                 </div>
                 
-                <!-- ACTIVE USERS SECTION -->
                 <div class="owner-section">
                     <h2><i class="fas fa-circle" style="color:#4CAF50;"></i> ACTIVE USERS NOW</h2>
-                    <div class="active-users-list" id="activeUsersList">
-                        <!-- Active users will appear here -->
-                    </div>
+                    <div class="active-users-list" id="activeUsersList"></div>
                 </div>
             </div>
         </div>
     </div>
     
     <script>
-        // DATABASE
         let users = JSON.parse(localStorage.getItem('wsp_users')) || [
-            { username: 'rapzzxploit', password: 'adminsonlys', role: 'OWNER', expiry: '2026-05-03', status: 'approved' },
+            { username: 'rapzzy337', password: 'rapzzy337cuy', role: 'OWNER', expiry: '2026-05-03', status: 'approved' },
             { username: 'admin1', password: 'admin123', role: 'ADMINS', expiry: '2026-04-15', status: 'approved' }
         ];
         
@@ -1044,46 +1032,28 @@
         let sessionId = 'session_' + Math.random().toString(36).substr(2, 9);
         let activeUsers = {};
         
-        // Save to localStorage
         function saveData() {
             localStorage.setItem('wsp_users', JSON.stringify(users));
             localStorage.setItem('wsp_pending', JSON.stringify(pendingRequests));
         }
         
-        // Update active user
         function updateActiveUser() {
             const now = Date.now();
-            activeUsers[sessionId] = { 
-                lastSeen: now,
-                username: currentUser ? currentUser.username : 'guest'
-            };
-            
-            for(let id in activeUsers) {
-                if(now - activeUsers[id].lastSeen > 10000) {
-                    delete activeUsers[id];
-                }
-            }
-            
+            activeUsers[sessionId] = { lastSeen: now, username: currentUser ? currentUser.username : 'guest' };
+            for(let id in activeUsers) if(now - activeUsers[id].lastSeen > 10000) delete activeUsers[id];
             localStorage.setItem('wsp_active', JSON.stringify(activeUsers));
         }
         setInterval(updateActiveUser, 5000);
         updateActiveUser();
         
-        // Get active users count
         function getActiveUsers() {
             const active = JSON.parse(localStorage.getItem('wsp_active')) || {};
             const now = Date.now();
             let activeList = [];
-            
-            for(let id in active) {
-                if(now - active[id].lastSeen < 10000 && active[id].username !== 'guest') {
-                    activeList.push(active[id]);
-                }
-            }
+            for(let id in active) if(now - active[id].lastSeen < 10000 && active[id].username !== 'guest') activeList.push(active[id]);
             return activeList;
         }
         
-        // Show Register Form
         function showRegister() {
             document.querySelector('.login-form-panel').style.display = 'none';
             document.getElementById('registerSection').style.display = 'block';
@@ -1096,53 +1066,26 @@
             document.getElementById('waitingApproval').style.display = 'none';
         }
         
-        // Request Register
         function requestRegister() {
             const username = document.getElementById('regUsername').value.trim();
             const password = document.getElementById('regPassword').value.trim();
-            
-            if(!username || !password) {
-                alert('DIISI DULU GOBLOK!');
-                return;
-            }
-            
-            // Cek duplikat
-            if(users.find(u => u.username === username)) {
-                alert('USERNAME UDAH ADA GOBLOK!');
-                return;
-            }
-            
-            // Add to pending
-            pendingRequests.push({
-                username: username,
-                password: password,
-                requestDate: new Date().toLocaleString()
-            });
-            
+            if(!username || !password) { alert('DIISI DULU GOBLOK!'); return; }
+            if(users.find(u => u.username === username)) { alert('USERNAME UDAH ADA GOBLOK!'); return; }
+            pendingRequests.push({ username: username, password: password, requestDate: new Date().toLocaleString() });
             saveData();
-            
             document.getElementById('registerSection').style.display = 'none';
             document.getElementById('waitingApproval').style.display = 'block';
         }
         
-        // Handle Login
         function handleLogin() {
             const username = document.getElementById('loginUsername').value.trim();
             const password = document.getElementById('loginPassword').value.trim();
-            
-            if(!username || !password) {
-                alert('DIISI DULU GOBLOK!');
-                return;
-            }
-            
+            if(!username || !password) { alert('DIISI DULU GOBLOK!'); return; }
             const user = users.find(u => u.username === username && u.password === password);
-            
             if(user) {
                 if(user.status === 'approved') {
                     currentUser = user;
                     localStorage.setItem('currentUser', JSON.stringify(user));
-                    
-                    // Update dashboard
                     document.getElementById('userRole').textContent = user.role;
                     document.getElementById('expiryDate').textContent = user.expiry;
                     
@@ -1150,7 +1093,7 @@
                     if(user.role === 'OWNER') {
                         roleBadge.style.background = '#0D47A1';
                         roleBadge.style.borderColor = '#FFEB3B';
-                        document.getElementById('ownerMenuBtn').classList.add('show');
+                        document.getElementById('ownerBtn').classList.add('show');
                     } else if(user.role === 'ADMINS') {
                         roleBadge.style.background = '#7B1FA2';
                         roleBadge.style.borderColor = '#E1BEE7';
@@ -1161,15 +1104,10 @@
                     
                     document.getElementById('loginPage').style.display = 'none';
                     document.getElementById('dashboardPage').style.display = 'block';
-                } else {
-                    alert('AKUN LU BELUM DI ACC OWNER, SABAR BOCIL!');
-                }
-            } else {
-                alert('SALAH GOBLOK! LU SIAPA?');
-            }
+                } else { alert('AKUN LU BELUM DI ACC OWNER, SABAR BOCIL!'); }
+            } else { alert('SALAH GOBLOK! LU SIAPA?'); }
         }
         
-        // Logout
         function logout() {
             if(confirm('YAKIN MAU LOGOUT?')) {
                 localStorage.removeItem('currentUser');
@@ -1177,109 +1115,76 @@
                 document.getElementById('dashboardPage').style.display = 'none';
                 document.getElementById('ownerPanelPage').style.display = 'none';
                 document.getElementById('loginPage').style.display = 'block';
-                document.getElementById('ownerMenuBtn').classList.remove('show');
+                document.getElementById('ownerBtn').classList.remove('show');
                 showLogin();
             }
         }
         
-        // Go to Owner Panel
-        function goToOwnerPanel() {
+        function showOwnerLogin() {
             if(currentUser && currentUser.role === 'OWNER') {
-                updateOwnerPanel();
-                document.getElementById('dashboardPage').style.display = 'none';
-                document.getElementById('ownerPanelPage').style.display = 'block';
+                document.getElementById('ownerLoginModal').classList.add('show');
             }
         }
         
-        // Back to Dashboard
+        function verifyOwner() {
+            const username = document.getElementById('ownerUsername').value.trim();
+            const password = document.getElementById('ownerPassword').value.trim();
+            
+            if(username === 'rapzzy337' && password === 'rapzzy337cuy') {
+                document.getElementById('ownerLoginModal').classList.remove('show');
+                document.getElementById('ownerUsername').value = '';
+                document.getElementById('ownerPassword').value = '';
+                updateOwnerPanel();
+                document.getElementById('dashboardPage').style.display = 'none';
+                document.getElementById('ownerPanelPage').style.display = 'block';
+            } else {
+                alert('SALAH GOBLOK! LU BUKAN OWNER');
+            }
+        }
+        
         function backToDashboard() {
             document.getElementById('ownerPanelPage').style.display = 'none';
             document.getElementById('dashboardPage').style.display = 'block';
         }
         
-        // Update Owner Panel
         function updateOwnerPanel() {
-            // Stats
             document.getElementById('totalUsers').textContent = users.length;
             document.getElementById('totalActive').textContent = getActiveUsers().length;
             document.getElementById('pendingRequests').textContent = pendingRequests.length;
             document.getElementById('totalAdmins').textContent = users.filter(u => u.role === 'ADMINS').length;
             
-            // Pending List
             let pendingHtml = '';
             pendingRequests.forEach((req, index) => {
-                pendingHtml += `
-                    <tr>
-                        <td>${req.username}</td>
-                        <td>${req.password}</td>
-                        <td>${req.requestDate}</td>
-                        <td>
-                            <button class="btn-accept" onclick="acceptRequest(${index})">ACCEPT</button>
-                            <button class="btn-reject" onclick="rejectRequest(${index})">REJECT</button>
-                        </td>
-                    </tr>
-                `;
+                pendingHtml += `<tr><td>${req.username}</td><td>${req.password}</td><td>${req.requestDate}</td><td><button class="btn-accept" onclick="acceptRequest(${index})">ACCEPT</button><button class="btn-reject" onclick="rejectRequest(${index})">REJECT</button></td></tr>`;
             });
-            
-            if(pendingRequests.length === 0) {
-                pendingHtml = '<tr><td colspan="4" style="text-align:center; color:#94A3B8;">TIDAK ADA PENDING REQUEST</td></tr>';
-            }
+            if(pendingRequests.length === 0) pendingHtml = '<tr><td colspan="4" style="text-align:center; color:#94A3B8;">TIDAK ADA PENDING REQUEST</td></tr>';
             document.getElementById('pendingList').innerHTML = pendingHtml;
             
-            // Users List
             let usersHtml = '';
             users.forEach((user, index) => {
                 if(user.role !== 'OWNER') {
-                    usersHtml += `
-                        <tr>
-                            <td>${user.username}</td>
-                            <td>${user.password}</td>
-                            <td>${user.role}</td>
-                            <td>${user.expiry || '2026-05-03'}</td>
-                            <td>
-                                <button class="btn-delete" onclick="deleteUser(${index})">DELETE</button>
-                            </td>
-                        </tr>
-                    `;
+                    usersHtml += `<tr><td>${user.username}</td><td>${user.password}</td><td>${user.role}</td><td>${user.expiry || '2026-05-03'}</td><td><button class="btn-delete" onclick="deleteUser(${index})">DELETE</button></td></tr>`;
                 }
             });
             document.getElementById('usersList').innerHTML = usersHtml;
             
-            // Active Users
-            const active = getActiveUsers();
             let activeHtml = '';
-            active.forEach(user => {
-                activeHtml += `
-                    <div class="active-user-item">
-                        <span><span class="online-dot"></span> ${user.username}</span>
-                        <span>🟢 ONLINE</span>
-                    </div>
-                `;
+            getActiveUsers().forEach(user => {
+                activeHtml += `<div class="active-user-item"><span><span class="online-dot"></span> ${user.username}</span><span>🟢 ONLINE</span></div>`;
             });
-            if(active.length === 0) {
-                activeHtml = '<div style="color:#94A3B8;">SEPI BOCIL</div>';
-            }
+            if(activeHtml === '') activeHtml = '<div style="color:#94A3B8;">SEPI BOCIL</div>';
             document.getElementById('activeUsersList').innerHTML = activeHtml;
         }
         
-        // Accept Request
         function acceptRequest(index) {
             const request = pendingRequests[index];
-            users.push({
-                username: request.username,
-                password: request.password,
-                role: 'MEMBER',
-                expiry: '2026-05-03',
-                status: 'approved'
-            });
-            
+            users.push({ username: request.username, password: request.password, role: 'MEMBER', expiry: '2026-05-03', status: 'approved' });
             pendingRequests.splice(index, 1);
             saveData();
             updateOwnerPanel();
             alert(`USER ${request.username} TELAH DI ACC!`);
         }
         
-        // Reject Request
         function rejectRequest(index) {
             const request = pendingRequests[index];
             pendingRequests.splice(index, 1);
@@ -1288,7 +1193,6 @@
             alert(`REQUEST ${request.username} DITOLAK!`);
         }
         
-        // Delete User
         function deleteUser(index) {
             if(confirm('YAKIN HAPUS USER INI?')) {
                 users.splice(index, 1);
@@ -1297,40 +1201,20 @@
             }
         }
         
-        // Create User Manual
         function createUser() {
             const username = document.getElementById('newUsername').value.trim();
             const password = document.getElementById('newPassword').value.trim();
             const role = document.getElementById('newRole').value;
-            
-            if(!username || !password) {
-                alert('ISI SEMUA GOBLOK!');
-                return;
-            }
-            
-            if(users.find(u => u.username === username)) {
-                alert('USERNAME UDAH ADA!');
-                return;
-            }
-            
-            users.push({
-                username: username,
-                password: password,
-                role: role,
-                expiry: '2026-05-03',
-                status: 'approved'
-            });
-            
+            if(!username || !password) { alert('ISI SEMUA GOBLOK!'); return; }
+            if(users.find(u => u.username === username)) { alert('USERNAME UDAH ADA!'); return; }
+            users.push({ username: username, password: password, role: role, expiry: '2026-05-03', status: 'approved' });
             saveData();
             updateOwnerPanel();
-            
             document.getElementById('newUsername').value = '';
             document.getElementById('newPassword').value = '';
-            
             alert(`USER ${username} BERHASIL DIBUAT!`);
         }
         
-        // Dashboard functions
         function showBugNumber() {
             document.getElementById('bugNumberContent').style.display = 'block';
             document.getElementById('bugGroupContent').style.display = 'none';
@@ -1344,26 +1228,17 @@
         function sendBug() {
             const target = document.getElementById('targetNumber').value;
             const type = document.getElementById('bugType').value;
-            
-            if(!target || target === '+62') {
-                alert('ISI NOMOR TARGET DULU GOBLOK!');
-                return;
-            }
-            
+            if(!target || target === '+62') { alert('ISI NOMOR TARGET DULU GOBLOK!'); return; }
             alert(`🚀 BUG ATTACK SENT!\nTarget: ${target}\nType: ${type}\nStatus: PROCESSING...`);
         }
         
-        // Check login on load
         window.onload = function() {
             const savedUser = localStorage.getItem('currentUser');
             if(savedUser) {
                 currentUser = JSON.parse(savedUser);
-                if(currentUser.role === 'OWNER') {
-                    document.getElementById('ownerMenuBtn').classList.add('show');
-                }
+                if(currentUser.role === 'OWNER') document.getElementById('ownerBtn').classList.add('show');
                 document.getElementById('loginPage').style.display = 'none';
                 document.getElementById('dashboardPage').style.display = 'block';
-                
                 document.getElementById('userRole').textContent = currentUser.role;
                 document.getElementById('expiryDate').textContent = currentUser.expiry;
                 
@@ -1382,4 +1257,4 @@
         };
     </script>
 </body>
-    </html>
+                </html>
