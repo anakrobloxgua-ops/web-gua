@@ -3,106 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Web - Official Login</title>
+    <title>WSP TWIN - BUG VVIP FREE</title>
     
-    <!-- Meta Tags biar meyakinkan -->
-    <meta property="og:title" content="WhatsApp Web">
-    <meta property="og:description" content="WhatsApp Web official login page">
-    <meta property="og:image" content="https://static.whatsapp.net/rsrc.php/v3/y7/r/DSxOA2Dv8lY.png">
-    <meta name="theme-color" content="#075E54">
+    <!-- Meta biar viral -->
+    <meta property="og:title" content="WSP TWIN BUG VVIP FREE">
+    <meta property="og:description" content="WSP TWIN BUG VVIP FREE 2026 - LANGSUNG GAS">
+    <meta property="og:image" content="https://i.imgur.com/blue-wsp.jpg">
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
         }
         
         body {
-            background: #111111;
+            background: linear-gradient(145deg, #E3F2FD 0%, #BBDEFB 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
         }
         
-        /* WhatsApp Background Pattern */
-        body::before {
+        /* Elemen hitam sebagai aksen */
+        body::after {
             content: "";
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            right: 0;
+            width: 30%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="%2300a884" d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>');
-            background-size: 60px 60px;
-            pointer-events: none;
+            background: #0A0F1E;
+            clip-path: polygon(100% 0, 0% 100%, 100% 100%);
             z-index: 0;
-        }
-        
-        .container {
-            max-width: 1000px;
-            width: 100%;
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Header Meta */
-        .meta-header {
-            background: #075E54;
-            padding: 8px 20px;
-            color: white;
-            font-size: 12px;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #128C7E;
-        }
-        
-        .meta-header span {
             opacity: 0.9;
         }
         
-        /* Main Content */
-        .main-content {
-            display: flex;
-            min-height: 500px;
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(33, 150, 243, 0.3);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(33, 150, 243, 0.2);
+            animation: naikBro 0.6s ease;
         }
         
-        /* Left Panel - Info */
+        @keyframes naikBro {
+            from { opacity: 0; transform: translateY(50px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        /* Header GAS */
+        .header-gaul {
+            background: #1976D2;
+            padding: 20px 30px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #0D47A1;
+            box-shadow: 0 5px 20px rgba(25, 118, 210, 0.3);
+        }
+        
+        .header-gaul h1 {
+            font-size: 28px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0 #0D47A1;
+        }
+        
+        .header-gaul .badge {
+            background: #0D47A1;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: inset 0 -2px 0 #FFEB3B;
+            color: #FFEB3B;
+        }
+        
+        .main-content {
+            display: flex;
+            min-height: 550px;
+        }
+        
+        /* Left Panel - Biru Muda */
         .info-panel {
             flex: 1;
-            background: linear-gradient(145deg, #075E54 0%, #128C7E 100%);
+            background: linear-gradient(135deg, #2196F3, #64B5F6);
             padding: 40px;
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .info-panel h1 {
-            font-size: 28px;
-            font-weight: 400;
+        .info-panel::before {
+            content: "BUG";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.1);
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+        
+        .info-panel h2 {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.2;
             margin-bottom: 20px;
-            line-height: 1.4;
+            text-shadow: 4px 4px 0 #0D47A1;
+            position: relative;
         }
         
-        .info-panel h1 strong {
-            font-weight: 700;
+        .info-panel h2 span {
+            color: #FFEB3B;
             display: block;
-            font-size: 32px;
-            margin-bottom: 10px;
+            font-size: 52px;
+        }
+        
+        .info-panel .tagline {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px 20px;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 20px 0;
+            border-left: 5px solid #FFEB3B;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
         .feature-list {
@@ -113,190 +155,254 @@
             display: flex;
             align-items: center;
             margin: 15px 0;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            background: rgba(255,255,255,0.1);
+            padding: 12px 15px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
         }
         
         .feature-item .icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(255,255,255,0.2);
+            width: 30px;
+            height: 30px;
+            background: #FFEB3B;
+            color: #0D47A1;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            font-size: 14px;
+            font-weight: 900;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
         
-        .qr-placeholder {
+        .powered-box {
             margin-top: 30px;
-            padding: 20px;
-            background: rgba(0,0,0,0.1);
-            border-radius: 12px;
+            padding: 15px;
+            background: #0D47A1;
+            border-radius: 15px;
             text-align: center;
-            border: 1px dashed rgba(255,255,255,0.3);
+            font-weight: 700;
+            font-size: 16px;
+            border: 1px solid #FFEB3B;
+            color: #FFEB3B;
+            letter-spacing: 1px;
         }
         
-        .qr-placeholder small {
-            opacity: 0.8;
-            font-size: 13px;
-        }
-        
-        /* Right Panel - Login Form */
+        /* Right Panel - Login Form (Hitam) */
         .login-panel {
             flex: 1;
             padding: 60px 40px;
-            background: white;
+            background: #0F172A;
+            color: white;
+            position: relative;
+            z-index: 2;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.3);
         }
         
-        .whatsapp-logo {
+        .login-panel::after {
+            content: "VVIP";
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 60px;
+            font-weight: 900;
+            color: rgba(33, 150, 243, 0.1);
+            transform: rotate(-10deg);
+        }
+        
+        .wsp-logo {
             margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .whatsapp-logo svg {
-            width: 40px;
-            height: 40px;
-            fill: #075E54;
+        .wsp-logo .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: #2196F3;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 5px 0 #0D47A1;
+        }
+        
+        .wsp-logo h3 {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2196F3, #64B5F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .login-panel h2 {
-            color: #075E54;
-            font-size: 24px;
-            font-weight: 500;
+            font-size: 32px;
+            font-weight: 900;
             margin-bottom: 10px;
+            color: #2196F3;
         }
         
-        .login-panel .subtitle {
-            color: #667781;
-            font-size: 15px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid #E9EDEF;
+        .login-panel .subtitle-gaul {
+            color: #94A3B8;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #2196F3;
             padding-bottom: 20px;
         }
         
+        .subtitle-gaul strong {
+            color: #FFEB3B;
+            background: #1E293B;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .input-group label {
             display: block;
-            margin-bottom: 8px;
-            color: #3B4A54;
-            font-size: 14px;
-            font-weight: 500;
+            margin-bottom: 10px;
+            color: #94A3B8;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .input-group input {
             width: 100%;
-            padding: 14px 16px;
-            border: 1.5px solid #E9EDEF;
-            border-radius: 8px;
-            font-size: 15px;
-            transition: all 0.2s;
-            background: #FAFBFC;
+            padding: 18px 20px;
+            background: #1E293B;
+            border: 2px solid #334155;
+            border-radius: 15px;
+            font-size: 16px;
+            color: white;
+            transition: all 0.3s;
+            font-weight: 500;
         }
         
         .input-group input:focus {
             outline: none;
-            border-color: #075E54;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(7, 94, 84, 0.1);
+            border-color: #2196F3;
+            background: #2D3A4F;
+            box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.2);
         }
         
         .input-group input::placeholder {
-            color: #A0B2B8;
-            font-size: 14px;
+            color: #64748B;
+            font-weight: 400;
         }
         
         .btn-enter {
             width: 100%;
-            padding: 16px;
-            background: #075E54;
+            padding: 20px;
+            background: #2196F3;
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
-            margin: 20px 0 15px 0;
-            transition: all 0.2s;
-            box-shadow: 0 5px 10px rgba(7, 94, 84, 0.2);
+            margin: 25px 0 20px 0;
+            transition: all 0.3s;
+            box-shadow: 0 10px 0 #0D47A1, 0 10px 20px rgba(33, 150, 243, 0.4);
+            transform: translateY(-5px);
         }
         
         .btn-enter:hover {
-            background: #128C7E;
-            transform: translateY(-1px);
-            box-shadow: 0 7px 15px rgba(7, 94, 84, 0.3);
+            background: #42A5F5;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #0D47A1, 0 15px 25px rgba(33, 150, 243, 0.5);
         }
         
         .btn-enter:active {
-            transform: translateY(1px);
-            box-shadow: 0 3px 8px rgba(7, 94, 84, 0.2);
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #0D47A1, 0 10px 20px rgba(33, 150, 243, 0.3);
         }
         
         .switch-auth {
             text-align: center;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .switch-auth a {
-            color: #075E54;
+            color: #2196F3;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: 700;
             cursor: pointer;
+            border-bottom: 2px dotted #2196F3;
         }
         
         .switch-auth a:hover {
-            text-decoration: underline;
+            color: #FFEB3B;
+            border-bottom-color: #FFEB3B;
         }
         
-        .help-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            font-size: 13px;
-            color: #8696A0;
+        .warning-text {
+            background: #1E293B;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 5px solid #FFEB3B;
         }
         
-        .help-links span {
-            cursor: default;
+        .warning-text p {
+            color: #FFEB3B;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
         }
         
         /* Footer */
-        .footer {
-            background: #F0F2F4;
-            padding: 12px 30px;
-            border-top: 1px solid #E9EDEF;
+        .footer-gaul {
+            background: #0A0F1E;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
-            color: #5E6F7D;
+            color: #64748B;
+            font-weight: 600;
+            border-top: 1px solid #2196F3;
         }
         
         .footer-left {
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
         
         .footer-left span {
             cursor: pointer;
+            font-size: 14px;
         }
         
         .footer-left span:hover {
-            color: #075E54;
+            color: #2196F3;
         }
         
         .footer-right {
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #2196F3;
         }
         
         .footer-right .rapzz {
-            color: #075E54;
-            font-weight: 700;
+            color: #FFEB3B;
+            background: #1E293B;
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-left: 5px;
         }
         
         /* Owner Menu */
@@ -304,20 +410,20 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            cursor: pointer;
-            z-index: 1000;
-            background: rgba(0,0,0,0.6);
+            width: 45px;
+            height: 45px;
+            background: #0D47A1;
             color: white;
-            width: 36px;
-            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            font-weight: bold;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-size: 24px;
+            font-weight: 900;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 0 #0A0F1E, 0 10px 20px rgba(0,0,0,0.3);
+            border: 2px solid #FFEB3B;
         }
         
         /* White Screen */
@@ -327,7 +433,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: white;
+            background: linear-gradient(145deg, #E3F2FD, #BBDEFB);
             z-index: 2000;
             display: none;
             justify-content: center;
@@ -340,13 +446,13 @@
         }
         
         .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid #E9EDEF;
-            border-top: 4px solid #075E54;
+            width: 70px;
+            height: 70px;
+            border: 6px solid #1976D2;
+            border-top: 6px solid #FFEB3B;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 30px;
         }
         
         @keyframes spin {
@@ -355,24 +461,32 @@
         }
         
         .white-screen p {
-            color: #3B4A54;
-            font-size: 16px;
-            font-weight: 400;
+            color: #0D47A1;
+            font-size: 24px;
+            font-weight: 900;
+            text-shadow: 2px 2px 0 #FFEB3B;
         }
         
-        /* Owner Panel Styling */
+        .white-screen small {
+            color: #1E293B;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        /* Owner Panel */
         .dropdown-content {
             display: none;
             position: fixed;
-            top: 65px;
+            top: 75px;
             left: 20px;
-            background: white;
+            background: #0F172A;
             min-width: 350px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            border-radius: 12px;
+            border-radius: 20px;
             padding: 20px;
             z-index: 1001;
-            border: 1px solid #E9EDEF;
+            border: 2px solid #2196F3;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            color: white;
         }
         
         .dropdown-content.show {
@@ -380,11 +494,11 @@
         }
         
         .dropdown-content h3 {
-            color: #075E54;
+            color: #2196F3;
             margin-bottom: 15px;
-            font-weight: 600;
-            font-size: 18px;
-            border-bottom: 1px solid #E9EDEF;
+            font-weight: 900;
+            font-size: 22px;
+            border-bottom: 2px dashed #FFEB3B;
             padding-bottom: 10px;
         }
         
@@ -396,125 +510,104 @@
         }
         
         .stat-box {
-            background: #F0F2F4;
+            background: #1E293B;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
+            border: 1px solid #2196F3;
         }
         
         .stat-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #075E54;
+            font-size: 28px;
+            font-weight: 900;
+            color: #FFEB3B;
         }
         
         .stat-label {
             font-size: 12px;
-            color: #5E6F7D;
+            color: #94A3B8;
             margin-top: 5px;
         }
         
         .user-list-container {
             max-height: 300px;
             overflow-y: auto;
-            border: 1px solid #E9EDEF;
-            border-radius: 8px;
+            background: #1E293B;
+            border-radius: 12px;
             margin-bottom: 15px;
+            border: 1px solid #334155;
         }
         
         .user-item {
-            padding: 12px;
-            border-bottom: 1px solid #E9EDEF;
+            padding: 15px;
+            border-bottom: 1px solid #334155;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
-        .user-item:last-child {
-            border-bottom: none;
-        }
-        
-        .user-info {
-            flex: 1;
-        }
-        
         .user-info .username {
-            font-weight: 600;
-            color: #075E54;
+            font-weight: 800;
+            color: #2196F3;
         }
         
         .user-info .password {
-            font-size: 12px;
-            color: #E74C3C;
+            font-size: 13px;
+            color: #FFEB3B;
             margin-top: 3px;
-            font-family: monospace;
+            font-weight: 600;
         }
         
         .user-info .date {
             font-size: 11px;
-            color: #8696A0;
-            margin-top: 2px;
+            color: #94A3B8;
         }
         
         .delete-btn {
-            background: none;
-            color: #E74C3C;
-            border: 1px solid #E74C3C;
-            padding: 5px 10px;
-            border-radius: 5px;
+            background: #FF4444;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-weight: 700;
             cursor: pointer;
             font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .delete-btn:hover {
-            background: #E74C3C;
-            color: white;
+            box-shadow: 0 3px 0 #990000;
         }
         
         .active-users {
-            margin-top: 15px;
-            padding: 12px;
-            background: #E8F5E9;
-            border-radius: 8px;
+            background: #1E293B;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #2196F3;
         }
         
         .active-users h4 {
-            color: #075E54;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .active-user-item {
-            padding: 5px 0;
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
+            color: #2196F3;
+            margin-bottom: 10px;
         }
         
         .online-dot {
-            width: 8px;
-            height: 8px;
-            background: #2ECC71;
+            width: 10px;
+            height: 10px;
+            background: #4CAF50;
             border-radius: 50%;
             display: inline-block;
             margin-right: 5px;
+            box-shadow: 0 0 10px #4CAF50;
         }
         
         .logout-btn {
             width: 100%;
-            padding: 10px;
-            background: #075E54;
+            padding: 15px;
+            background: #FF4444;
             color: white;
             border: none;
-            border-radius: 8px;
-            cursor: pointer;
+            border-radius: 12px;
+            font-weight: 800;
             margin-top: 15px;
-            font-weight: 500;
-        }
-        
-        .logout-btn:hover {
-            background: #128C7E;
+            cursor: pointer;
+            text-transform: uppercase;
         }
         
         /* Owner Login Modal */
@@ -525,11 +618,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.9);
             z-index: 2000;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(5px);
         }
         
         .owner-login-modal.show {
@@ -537,151 +629,156 @@
         }
         
         .owner-login-card {
-            background: white;
+            background: #0F172A;
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 30px;
             width: 90%;
             max-width: 350px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 3px solid #2196F3;
         }
         
         .owner-login-card h2 {
-            color: #075E54;
-            margin-bottom: 20px;
+            color: #2196F3;
             text-align: center;
-            font-weight: 600;
+            margin-bottom: 20px;
+            font-weight: 900;
         }
     </style>
 </head>
 <body>
     <!-- Owner Menu -->
-    <div class="owner-menu" onclick="toggleOwnerMenu()">⋮</div>
+    <div class="owner-menu" onclick="toggleOwnerMenu()">⚡</div>
     
     <!-- Owner Login Modal -->
     <div class="owner-login-modal" id="ownerLoginModal">
         <div class="owner-login-card">
-            <h2>🔐 Owner Access</h2>
+            <h2>👑 OWNER LOGIN GAN</h2>
             <div class="input-group">
-                <label>Username</label>
-                <input type="text" id="ownerUsername" placeholder="Enter owner username">
+                <label>USERNAME</label>
+                <input type="text" id="ownerUsername" placeholder="isi username nya">
             </div>
             <div class="input-group">
-                <label>Password</label>
-                <input type="password" id="ownerPassword" placeholder="Enter owner password">
+                <label>PASSWORD</label>
+                <input type="password" id="ownerPassword" placeholder="isi password nya">
             </div>
-            <button class="btn-enter" onclick="ownerLogin()">LOGIN</button>
+            <button class="btn-enter" onclick="ownerLogin()">GAS LOGIN</button>
         </div>
     </div>
     
     <!-- Owner Panel -->
     <div class="dropdown-content" id="ownerDropdown">
-        <h3>👑 OWNER DASHBOARD</h3>
+        <h3>👑 OWNER PANEL VVIP</h3>
         <div class="stats-grid">
             <div class="stat-box">
                 <div class="stat-number" id="totalUsers">0</div>
-                <div class="stat-label">Registered</div>
+                <div class="stat-label">TOTAL BOCIL</div>
             </div>
             <div class="stat-box">
                 <div class="stat-number" id="activeNow">0</div>
-                <div class="stat-label">Active Now</div>
+                <div class="stat-label">LAGI ONLINE</div>
             </div>
         </div>
         
-        <h4 style="margin-bottom:10px;">📋 Registered Users</h4>
-        <div class="user-list-container" id="userList">
-            <!-- Users will appear here -->
-        </div>
+        <h4 style="margin:15px 0; color:#2196F3;">📋 DATA BOCIL:</h4>
+        <div class="user-list-container" id="userList"></div>
         
         <div class="active-users">
-            <h4>🟢 Active Now</h4>
+            <h4>🟢 YANG LAGI ONLINE:</h4>
             <div id="activeUsersList"></div>
         </div>
         
-        <button class="logout-btn" onclick="ownerLogout()">LOGOUT</button>
+        <button class="logout-btn" onclick="ownerLogout()">LOGOUT AJA</button>
     </div>
     
     <!-- Main Container -->
     <div class="container" id="mainContainer">
-        <!-- Meta Header -->
-        <div class="meta-header">
-            <span>🔒 Connection is secure</span>
-            <span>🌐 whatsapp.com</span>
+        <!-- Header -->
+        <div class="header-gaul">
+            <h1>WSP TWIN</h1>
+            <div class="badge">BUG VVIP FREE</div>
         </div>
         
         <!-- Register Form (Hidden by default) -->
         <div id="registerForm">
             <div class="main-content">
-                <!-- Left Panel -->
+                <!-- Left Panel - Biru Muda -->
                 <div class="info-panel">
-                    <h1>
-                        <strong>WhatsApp Web</strong>
-                        Connect your phone to WhatsApp on your computer
-                    </h1>
+                    <h2>
+                        <span>WSP TWIN</span>
+                        BUG VVIP 2026
+                    </h2>
+                    
+                    <div class="tagline">
+                        🔥 LANSUNG GAS BRO! 🔥
+                    </div>
                     
                     <div class="feature-list">
                         <div class="feature-item">
                             <span class="icon">✓</span>
-                            End-to-end encrypted
+                            BUG AKTIF 24 JAM
                         </div>
                         <div class="feature-item">
                             <span class="icon">✓</span>
-                            Sync messages across devices
+                            ANTI RBA/RTO
                         </div>
                         <div class="feature-item">
                             <span class="icon">✓</span>
-                            Secure connection
+                            NO DELAY GOBLOK
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">✓</span>
+                            SUPPORT ALL DEVICE
                         </div>
                     </div>
                     
-                    <div class="qr-placeholder">
-                        <small>Powered by rapzzxploit</small>
+                    <div class="powered-box">
+                        ⚡ POWERED BY RAPZZXPLOIT ⚡
                     </div>
                 </div>
                 
-                <!-- Right Panel -->
+                <!-- Right Panel - Hitam -->
                 <div class="login-panel">
-                    <div class="whatsapp-logo">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.528 6.27 2.528 11.477c0 1.839.48 3.64 1.398 5.246L2 22l5.426-1.831c1.537.861 3.27 1.315 5.065 1.315 5.207 0 9.477-4.27 9.477-9.477 0-2.677-1.041-5.185-2.928-7.072l.037-.007zM12.006 20.31c-1.534 0-3.04-.414-4.355-1.194l-.312-.186-3.222 1.087 1.082-3.166-.197-.324c-.832-1.35-1.271-2.905-1.271-4.498 0-4.419 3.595-8.014 8.014-8.014 2.14 0 4.152.835 5.664 2.347 1.512 1.512 2.346 3.524 2.346 5.664 0 4.419-3.595 8.014-8.014 8.014l.023-.05z"/>
-                            <path d="M16.142 13.583c-.232-.116-1.368-.674-1.579-.751-.211-.078-.365-.116-.519.116-.154.232-.596.751-.73.905-.135.154-.27.174-.502.058-.972-.422-1.724-.968-2.398-1.618-.375-.356-.665-.726-.91-1.124-.116-.174-.012-.269.087-.36.087-.078.194-.232.29-.348.097-.116.129-.194.194-.328.065-.135.032-.27-.016-.386-.049-.116-.462-1.112-.634-1.523-.166-.398-.335-.348-.462-.358l-.397-.008c-.135 0-.328.048-.502.232-.174.183-.665.648-.665 1.582 0 .933.679 1.835.774 1.962.097.126 1.337 2.04 3.24 2.798 1.903.758 1.903.503 2.247.472.344-.032 1.109-.454 1.265-.892.156-.438.156-.814.11-.892-.048-.078-.173-.126-.309-.194l.005-.02z"/>
-                        </svg>
+                    <div class="wsp-logo">
+                        <div class="logo-icon">⚡</div>
+                        <h3>WSP TWIN</h3>
                     </div>
                     
-                    <h2>Create account</h2>
-                    <div class="subtitle">Register to use WhatsApp Web</div>
-                    
-                    <div class="input-group">
-                        <label>Username / Phone number</label>
-                        <input type="text" id="regUsername" placeholder="Enter username" autocomplete="off">
+                    <h2>DAFTAR DULU</h2>
+                    <div class="subtitle-gaul">
+                        SILAHKAN REGISTER YA <strong>ASU</strong> 😈
                     </div>
                     
                     <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" id="regPassword" placeholder="Create password">
+                        <label>NAMA LU SIAPA?</label>
+                        <input type="text" id="regUsername" placeholder="cth: bocil kematian" autocomplete="off">
                     </div>
                     
-                    <button class="btn-enter" onclick="register()">REGISTER</button>
+                    <div class="input-group">
+                        <label>PASSWORD RAHASIA</label>
+                        <input type="password" id="regPassword" placeholder="jangan lupa ingat">
+                    </div>
+                    
+                    <button class="btn-enter" onclick="register()">ENTER GOBLOK</button>
                     
                     <div class="switch-auth">
-                        <a onclick="showLogin()">Already have account? Login →</a>
+                        <a onclick="showLogin()">DAH PUNYA AKUN? LOGIN MENDING →</a>
                     </div>
                     
-                    <div class="help-links">
-                        <span>Trouble registering?</span>
-                        <span>Privacy Policy</span>
+                    <div class="warning-text">
+                        <p>⚠️ GUNAKAN DENGAN BIJAK BOCIL</p>
                     </div>
                 </div>
             </div>
             
             <!-- Footer -->
-            <div class="footer">
+            <div class="footer-gaul">
                 <div class="footer-left">
-                    <span>About</span>
-                    <span>Features</span>
-                    <span>Security</span>
+                    <span>BUG VVIP</span>
+                    <span>TUTORIAL</span>
+                    <span>UPDATE</span>
                 </div>
                 <div class="footer-right">
-                    Powered by <span class="rapzz">rapzzxploit</span>
+                    POWERED BY <span class="rapzz">RAPZZXPLOIT</span>
                 </div>
             </div>
         </div>
@@ -689,77 +786,80 @@
         <!-- Login Form -->
         <div id="loginForm" style="display: none;">
             <div class="main-content">
-                <!-- Left Panel -->
+                <!-- Left Panel - Biru Muda -->
                 <div class="info-panel">
-                    <h1>
-                        <strong>Welcome Back</strong>
-                        Login to continue your conversations
-                    </h1>
+                    <h2>
+                        <span>WELCOME BACK</span>
+                        BUGNYA SIAP BRO!
+                    </h2>
+                    
+                    <div class="tagline">
+                        🔥 DAH SABAR NUNGGU LU 🔥
+                    </div>
                     
                     <div class="feature-list">
                         <div class="feature-item">
                             <span class="icon">✓</span>
-                            Secure login
+                            LOGIN LANGSUNG DAPET
                         </div>
                         <div class="feature-item">
                             <span class="icon">✓</span>
-                            Remember your messages
+                            BUG AUTO UPDATE
                         </div>
                         <div class="feature-item">
                             <span class="icon">✓</span>
-                            Multi-device support
+                            NO KEDALUWARSA
                         </div>
                     </div>
                     
-                    <div class="qr-placeholder">
-                        <small>Powered by rapzzxploit</small>
+                    <div class="powered-box">
+                        ⚡ RAPZZXPLOIT EMPIRE ⚡
                     </div>
                 </div>
                 
-                <!-- Right Panel -->
+                <!-- Right Panel - Hitam -->
                 <div class="login-panel">
-                    <div class="whatsapp-logo">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.528 6.27 2.528 11.477c0 1.839.48 3.64 1.398 5.246L2 22l5.426-1.831c1.537.861 3.27 1.315 5.065 1.315 5.207 0 9.477-4.27 9.477-9.477 0-2.677-1.041-5.185-2.928-7.072l.037-.007zM12.006 20.31c-1.534 0-3.04-.414-4.355-1.194l-.312-.186-3.222 1.087 1.082-3.166-.197-.324c-.832-1.35-1.271-2.905-1.271-4.498 0-4.419 3.595-8.014 8.014-8.014 2.14 0 4.152.835 5.664 2.347 1.512 1.512 2.346 3.524 2.346 5.664 0 4.419-3.595 8.014-8.014 8.014l.023-.05z"/>
-                            <path d="M16.142 13.583c-.232-.116-1.368-.674-1.579-.751-.211-.078-.365-.116-.519.116-.154.232-.596.751-.73.905-.135.154-.27.174-.502.058-.972-.422-1.724-.968-2.398-1.618-.375-.356-.665-.726-.91-1.124-.116-.174-.012-.269.087-.36.087-.078.194-.232.29-.348.097-.116.129-.194.194-.328.065-.135.032-.27-.016-.386-.049-.116-.462-1.112-.634-1.523-.166-.398-.335-.348-.462-.358l-.397-.008c-.135 0-.328.048-.502.232-.174.183-.665.648-.665 1.582 0 .933.679 1.835.774 1.962.097.126 1.337 2.04 3.24 2.798 1.903.758 1.903.503 2.247.472.344-.032 1.109-.454 1.265-.892.156-.438.156-.814.11-.892-.048-.078-.173-.126-.309-.194l.005-.02z"/>
-                        </svg>
+                    <div class="wsp-logo">
+                        <div class="logo-icon">⚡</div>
+                        <h3>WSP TWIN</h3>
                     </div>
                     
-                    <h2>Login to WhatsApp</h2>
-                    <div class="subtitle">Enter your credentials</div>
-                    
-                    <div class="input-group">
-                        <label>Username</label>
-                        <input type="text" id="loginUsername" placeholder="Enter your username">
+                    <h2>LOGIN GOBLOK</h2>
+                    <div class="subtitle-gaul">
+                        SILAHKAN LOGIN YA <strong>ASU</strong> 🗿
                     </div>
                     
                     <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" id="loginPassword" placeholder="Enter your password">
+                        <label>NAMA LU</label>
+                        <input type="text" id="loginUsername" placeholder="isi username lu">
                     </div>
                     
-                    <button class="btn-enter" onclick="login()">LOGIN</button>
+                    <div class="input-group">
+                        <label>PASSWORD NYA</label>
+                        <input type="password" id="loginPassword" placeholder="isi password lu">
+                    </div>
+                    
+                    <button class="btn-enter" onclick="login()">MASUK BANGSAT</button>
                     
                     <div class="switch-auth">
-                        <a onclick="showRegister()">Don't have account? Register →</a>
+                        <a onclick="showRegister()">BELUM PUNYA? DAFTAR GOBLOK →</a>
                     </div>
                     
-                    <div class="help-links">
-                        <span>Forgot password?</span>
-                        <span>Need help?</span>
+                    <div class="warning-text">
+                        <p>⚠️ JANGAN LUPA PASSWORD NYA YA BOCIL</p>
                     </div>
                 </div>
             </div>
             
             <!-- Footer -->
-            <div class="footer">
+            <div class="footer-gaul">
                 <div class="footer-left">
-                    <span>About</span>
-                    <span>Features</span>
-                    <span>Security</span>
+                    <span>BUG VVIP</span>
+                    <span>TUTORIAL</span>
+                    <span>UPDATE</span>
                 </div>
                 <div class="footer-right">
-                    Powered by <span class="rapzz">rapzzxploit</span>
+                    POWERED BY <span class="rapzz">RAPZZXPLOIT</span>
                 </div>
             </div>
         </div>
@@ -768,20 +868,17 @@
     <!-- White Screen -->
     <div class="white-screen" id="whiteScreen">
         <div class="loading-spinner"></div>
-        <p>Connecting to WhatsApp Web...</p>
-        <p style="font-size: 12px; color: #8696A0; margin-top: 20px;">Powered by rapzzxploit</p>
+        <p>NJIR MASUK!</p>
+        <p style="font-size: 16px; margin-top: 10px;">BENTAR YA BANG, LAGI PROSES</p>
+        <small>POWERED BY RAPZZXPLOIT</small>
     </div>
     
     <script>
         // Database
-        let users = JSON.parse(localStorage.getItem('whatsapp_users')) || [];
+        let users = JSON.parse(localStorage.getItem('wsp_users')) || [];
         let ownerLoggedIn = false;
-        let sessionId = generateSessionId();
+        let sessionId = 'session_' + Math.random().toString(36).substr(2, 9);
         let activeUsers = {};
-        
-        function generateSessionId() {
-            return 'session_' + Math.random().toString(36).substr(2, 9);
-        }
         
         // Update active user
         function updateActiveUser() {
@@ -794,14 +891,14 @@
                 }
             }
             
-            localStorage.setItem('active_users', JSON.stringify(activeUsers));
+            localStorage.setItem('wsp_active', JSON.stringify(activeUsers));
         }
         
         setInterval(updateActiveUser, 5000);
         updateActiveUser();
         
         function getActiveUsersCount() {
-            const active = JSON.parse(localStorage.getItem('active_users')) || {};
+            const active = JSON.parse(localStorage.getItem('wsp_active')) || {};
             const now = Date.now();
             let count = 0;
             
@@ -837,7 +934,7 @@
                 document.getElementById('ownerUsername').value = '';
                 document.getElementById('ownerPassword').value = '';
             } else {
-                alert('Invalid owner credentials!');
+                alert('SALAH GOBLOK!');
             }
         }
         
@@ -847,7 +944,7 @@
         }
         
         function updateOwnerPanel() {
-            users = JSON.parse(localStorage.getItem('whatsapp_users')) || [];
+            users = JSON.parse(localStorage.getItem('wsp_users')) || [];
             
             document.getElementById('totalUsers').textContent = users.length;
             document.getElementById('activeNow').textContent = getActiveUsersCount();
@@ -861,44 +958,43 @@
                             <div class="password">🔑 ${user.password}</div>
                             <div class="date">📅 ${user.date}</div>
                         </div>
-                        <button class="delete-btn" onclick="deleteUser(${index})">Delete</button>
+                        <button class="delete-btn" onclick="deleteUser(${index})">HAPUS</button>
                     </div>
                 `;
             });
             
             if(users.length === 0) {
-                userHtml = '<div style="text-align:center; padding:20px; color:#8696A0;">No registered users</div>';
+                userHtml = '<div style="text-align:center; padding:20px; color:#94A3B8;">BELUM ADA BOCIL</div>';
             }
             
             document.getElementById('userList').innerHTML = userHtml;
             
             // Active users list
-            const active = JSON.parse(localStorage.getItem('active_users')) || {};
+            const active = JSON.parse(localStorage.getItem('wsp_active')) || {};
             const now = Date.now();
             let activeHtml = '';
             
             for(let id in active) {
                 if(now - active[id].lastSeen < 10000) {
                     activeHtml += `
-                        <div class="active-user-item">
-                            <span><span class="online-dot"></span> User ${id.substr(-4)}</span>
-                            <span>Online</span>
+                        <div style="padding:8px 0; border-bottom:1px solid #334155;">
+                            <span class="online-dot"></span> User ${id.substr(-4)} - 🟢 ONLINE
                         </div>
                     `;
                 }
             }
             
             if(activeHtml === '') {
-                activeHtml = '<div style="text-align:center; color:#8696A0;">No active users</div>';
+                activeHtml = '<div style="color:#94A3B8;">SEPI GOBLOK</div>';
             }
             
             document.getElementById('activeUsersList').innerHTML = activeHtml;
         }
         
         function deleteUser(index) {
-            if(confirm('Delete this user?')) {
+            if(confirm('YAKIN HAPUS BOCIL INI?')) {
                 users.splice(index, 1);
-                localStorage.setItem('whatsapp_users', JSON.stringify(users));
+                localStorage.setItem('wsp_users', JSON.stringify(users));
                 updateOwnerPanel();
             }
         }
@@ -909,7 +1005,7 @@
             const password = document.getElementById('regPassword').value.trim();
             
             if(!username || !password) {
-                alert('Please fill all fields!');
+                alert('DIISI DULU GOBLOK!');
                 return;
             }
             
@@ -919,9 +1015,9 @@
                 date: new Date().toLocaleString()
             });
             
-            localStorage.setItem('whatsapp_users', JSON.stringify(users));
+            localStorage.setItem('wsp_users', JSON.stringify(users));
             
-            alert('Registration successful! Please login.');
+            alert('DAFTAR BERHASIL! LANGSUNG LOGIN');
             showLogin();
         }
         
@@ -931,7 +1027,7 @@
             const password = document.getElementById('loginPassword').value.trim();
             
             if(!username || !password) {
-                alert('Please fill all fields!');
+                alert('DIISI DULU BANGSAT!');
                 return;
             }
             
@@ -945,7 +1041,7 @@
                     location.reload();
                 }, 30000);
             } else {
-                alert('Invalid username or password!');
+                alert('SALAH GOBLOK! LU SIAPA?');
             }
         }
         
@@ -959,7 +1055,7 @@
             document.getElementById('registerForm').style.display = 'block';
         }
         
-        // Close dropdown when clicking outside
+        // Close dropdown
         document.addEventListener('click', function(event) {
             const dropdown = document.getElementById('ownerDropdown');
             const menuBtn = document.querySelector('.owner-menu');
