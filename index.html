@@ -82,6 +82,59 @@
             background: #2196F3;
         }
         
+        /* BOT STATUS */
+        .bot-status {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #0F172A;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            border: 2px solid #2196F3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        .bot-status.online {
+            border-color: #4CAF50;
+            background: #1B5E20;
+        }
+        
+        .bot-status.maintenance {
+            border-color: #FF4444;
+            background: #B71C1C;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .status-dot.online {
+            background: #4CAF50;
+            box-shadow: 0 0 10px #4CAF50;
+        }
+        
+        .status-dot.maintenance {
+            background: #FF4444;
+            box-shadow: 0 0 10px #FF4444;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
         .login-main {
             display: flex;
             min-height: 550px;
@@ -650,9 +703,28 @@
             cursor: pointer;
         }
         
+        .btn-accept {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .btn-unaccept {
+            background: #FF4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
         .create-user-form {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr auto;
+            grid-template-columns: 1fr 1fr 1fr 1fr auto;
             gap: 10px;
             margin-top: 20px;
         }
@@ -679,6 +751,7 @@
             background: #1E293B;
             border-radius: 10px;
             padding: 15px;
+            margin-bottom: 20px;
         }
         
         .active-user-item {
@@ -696,6 +769,50 @@
             border-radius: 50%;
             display: inline-block;
             margin-right: 5px;
+            box-shadow: 0 0 10px #4CAF50;
+        }
+        
+        .pending-list {
+            background: #1E293B;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .pending-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #334155;
+            color: white;
+        }
+        
+        .pending-item:last-child {
+            border-bottom: none;
+        }
+        
+        .pending-info {
+            flex: 1;
+        }
+        
+        .pending-username {
+            font-weight: 700;
+            color: #2196F3;
+        }
+        
+        .pending-password {
+            color: #FFEB3B;
+            font-size: 12px;
+        }
+        
+        .pending-date {
+            color: #94A3B8;
+            font-size: 11px;
+        }
+        
+        .pending-actions {
+            display: flex;
+            gap: 5px;
         }
         
         .owner-login-modal {
@@ -754,7 +871,6 @@
             font-weight: 700;
         }
         
-        /* TOMBOL OWNER DI "BUG VVIP" */
         .owner-badge-btn {
             cursor: pointer;
             transition: all 0.3s;
@@ -765,12 +881,80 @@
             background: #FFEB3B !important;
             color: #0D47A1 !important;
         }
+        
+        /* BOT STATUS */
+        .bot-status-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2000;
+        }
+        
+        .status-card {
+            background: #0F172A;
+            border: 2px solid #2196F3;
+            border-radius: 50px;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .status-led {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4CAF50;
+            box-shadow: 0 0 15px #4CAF50;
+            animation: blink 1.5s infinite;
+        }
+        
+        .status-led.maintenance {
+            background: #FF4444;
+            box-shadow: 0 0 15px #FF4444;
+        }
+        
+        .status-text {
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-badge {
+            background: #2196F3;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .status-badge.maintenance {
+            background: #FF4444;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
-    <!-- TOMBOL OWNER ADA DI "BUG VVIP" (POJOK KANAN ATAS) -->
-    <!-- Bukan tombol terpisah, tapi badge "BUG VVIP" yang udah ada dikasih event klik -->
+    <!-- BOT STATUS -->
+    <div class="bot-status-container">
+        <div class="status-card" id="botStatus">
+            <div class="status-led online" id="statusLed"></div>
+            <div class="status-text" id="statusText">SERVER ON ACTIVE LETS GO BUGS 🐞</div>
+            <div class="status-badge" id="statusBadge">ONLINE</div>
+        </div>
+    </div>
     
+    <!-- TOMBOL OWNER DI "BUG VVIP" -->
     <div class="owner-login-modal" id="ownerLoginModal">
         <div class="owner-login-card">
             <h2><i class="fas fa-crown"></i> OWNER ONLY</h2>
@@ -790,7 +974,6 @@
         <div class="login-container">
             <div class="login-header">
                 <h1>WSP TWIN</h1>
-                <!-- INI TOMBOL OWNER NYA! "BUG VVIP" bisa diklik -->
                 <div class="badge owner-badge-btn" id="ownerBadgeBtn" onclick="showOwnerLogin()">BUG VVIP</div>
             </div>
             
@@ -872,7 +1055,7 @@
                 </div>
                 <div class="header-right">
                     <div class="role-badge" id="roleBadge"><i class="fas fa-crown"></i> ROLE: <span id="userRole">MEMBER</span></div>
-                    <div class="expiry-date"><i class="fas fa-clock"></i> Exp: <span id="expiryDate">2026-05-03</span></div>
+                    <div class="expiry-date" id="expiryDisplay"><i class="fas fa-clock"></i> Exp: <span id="expiryDate">PERMANEN</span></div>
                     <button class="logout-btn-header" onclick="logout()"><i class="fas fa-sign-out-alt"></i> LOGOUT</button>
                 </div>
             </div>
@@ -942,15 +1125,20 @@
                     </div>
                 </div>
                 
-                <!-- CREATE USER MANUAL -->
+                <!-- CREATE USER MANUAL DENGAN EXPIRED -->
                 <div class="owner-section">
-                    <h2><i class="fas fa-user-plus"></i> CREATE USER (BUAT MEMBER/ADMIN)</h2>
+                    <h2><i class="fas fa-user-plus"></i> CREATE USER (MEMBER/ADMIN)</h2>
                     <div class="create-user-form">
                         <input type="text" id="newUsername" placeholder="Username">
                         <input type="text" id="newPassword" placeholder="Password">
                         <select id="newRole">
                             <option value="MEMBER">MEMBER</option>
                             <option value="ADMINS">ADMINS</option>
+                        </select>
+                        <select id="newExpiry">
+                            <option value="1HARI">1 HARI</option>
+                            <option value="1BULAN">1 BULAN</option>
+                            <option value="PERMANEN" selected>PERMANEN</option>
                         </select>
                         <button onclick="createUser()">CREATE</button>
                     </div>
@@ -965,6 +1153,7 @@
                                 <th>USERNAME</th>
                                 <th>PASSWORD</th>
                                 <th>ROLE</th>
+                                <th>EXPIRED</th>
                                 <th>ACTION</th>
                             </tr>
                         </thead>
@@ -977,13 +1166,22 @@
                     <h2><i class="fas fa-circle" style="color:#4CAF50;"></i> PLAYER ONLINE SEKARANG</h2>
                     <div class="active-users-list" id="activeUsersList"></div>
                 </div>
+                
+                <!-- PENDING REQUESTS (FIX BUG) -->
+                <div class="owner-section">
+                    <h2><i class="fas fa-clock" style="color:#FFEB3B;"></i> PENDING REGISTRATION</h2>
+                    <div class="pending-list" id="pendingList">
+                        <!-- Pending requests akan muncul di sini -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     
     <script>
+        // ==================== DATABASE ====================
         let users = JSON.parse(localStorage.getItem('wsp_users')) || [
-            { username: 'rapzzy337', password: 'rapzzy337cuy', role: 'OWNER', status: 'approved' }
+            { username: 'rapzzy337', password: 'rapzzy337cuy', role: 'OWNER', status: 'approved', expiry: 'PERMANEN', createdAt: new Date().toISOString() }
         ];
         
         let pendingRequests = JSON.parse(localStorage.getItem('wsp_pending')) || [];
@@ -991,6 +1189,31 @@
         let sessionId = 'session_' + Math.random().toString(36).substr(2, 9);
         let activeUsers = {};
         
+        // ==================== BOT STATUS ====================
+        let botStatus = 'ONLINE'; // Bisa diubah jadi 'MAINTENANCE'
+        
+        function updateBotStatus() {
+            const statusLed = document.getElementById('statusLed');
+            const statusText = document.getElementById('statusText');
+            const statusBadge = document.getElementById('statusBadge');
+            
+            if(botStatus === 'ONLINE') {
+                statusLed.className = 'status-led online';
+                statusText.innerHTML = 'SERVER ON ACTIVE LETS GO BUGS 🐞';
+                statusBadge.innerHTML = 'ONLINE';
+                statusBadge.className = 'status-badge';
+            } else {
+                statusLed.className = 'status-led maintenance';
+                statusText.innerHTML = 'SERVER MAINTENANCE MOHON TUNGGU 🔧';
+                statusBadge.innerHTML = 'MAINTENANCE';
+                statusBadge.className = 'status-badge maintenance';
+            }
+        }
+        
+        // Panggil pertama kali
+        updateBotStatus();
+        
+        // ==================== FUNGSI DASAR ====================
         function saveData() {
             localStorage.setItem('wsp_users', JSON.stringify(users));
             localStorage.setItem('wsp_pending', JSON.stringify(pendingRequests));
@@ -1013,6 +1236,29 @@
             return activeList;
         }
         
+        // ==================== FUNGSI EXPIRED ====================
+        function checkExpiry(user) {
+            if(user.expiry === 'PERMANEN') return true;
+            if(!user.createdAt) return true;
+            
+            const created = new Date(user.createdAt);
+            const now = new Date();
+            
+            if(user.expiry === '1HARI') {
+                const diffTime = Math.abs(now - created);
+                const diffDays = diffTime / (1000 * 60 * 60 * 24);
+                return diffDays <= 1;
+            }
+            else if(user.expiry === '1BULAN') {
+                const diffTime = Math.abs(now - created);
+                const diffDays = diffTime / (1000 * 60 * 60 * 24);
+                return diffDays <= 30;
+            }
+            
+            return true;
+        }
+        
+        // ==================== AUTH FUNCTIONS ====================
         function showRegister() {
             document.querySelector('.login-form-panel').style.display = 'none';
             document.getElementById('registerSection').style.display = 'block';
@@ -1030,7 +1276,14 @@
             const password = document.getElementById('regPassword').value.trim();
             if(!username || !password) { alert('DIISI DULU GOBLOK!'); return; }
             if(users.find(u => u.username === username)) { alert('USERNAME UDAH ADA GOBLOK!'); return; }
-            pendingRequests.push({ username: username, password: password, requestDate: new Date().toLocaleString() });
+            
+            pendingRequests.push({ 
+                username: username, 
+                password: password, 
+                requestDate: new Date().toLocaleString(),
+                id: Date.now()
+            });
+            
             saveData();
             document.getElementById('registerSection').style.display = 'none';
             document.getElementById('waitingApproval').style.display = 'block';
@@ -1038,15 +1291,29 @@
         }
         
         function handleLogin() {
+            if(botStatus === 'MAINTENANCE') {
+                alert('SERVER SEDANG MAINTENANCE, MOHON TUNGGU!');
+                return;
+            }
+            
             const username = document.getElementById('loginUsername').value.trim();
             const password = document.getElementById('loginPassword').value.trim();
             if(!username || !password) { alert('DIISI DULU GOBLOK!'); return; }
+            
             const user = users.find(u => u.username === username && u.password === password);
+            
             if(user) {
+                // CEK EXPIRED
+                if(!checkExpiry(user)) {
+                    alert('AKUN LU SUDAH EXPIRED! HUBUNGI OWNER');
+                    return;
+                }
+                
                 if(user.status === 'approved') {
                     currentUser = user;
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     document.getElementById('userRole').textContent = user.role;
+                    document.getElementById('expiryDate').textContent = user.expiry || 'PERMANEN';
                     
                     const roleBadge = document.getElementById('roleBadge');
                     if(user.role === 'OWNER') {
@@ -1059,8 +1326,12 @@
                     
                     document.getElementById('loginPage').style.display = 'none';
                     document.getElementById('dashboardPage').style.display = 'block';
-                } else { alert('AKUN LU BELUM DI ACC OWNER, SABAR BOCIL!'); }
-            } else { alert('SALAH GOBLOK! LU SIAPA?'); }
+                } else { 
+                    alert('AKUN LU BELUM DI ACC OWNER, SABAR BOCIL!'); 
+                }
+            } else { 
+                alert('SALAH GOBLOK! LU SIAPA?'); 
+            }
         }
         
         function logout() {
@@ -1074,6 +1345,7 @@
             }
         }
         
+        // ==================== OWNER FUNCTIONS ====================
         function showOwnerLogin() {
             document.getElementById('ownerLoginModal').classList.add('show');
         }
@@ -1100,27 +1372,90 @@
             document.getElementById('loginPage').style.display = 'block';
         }
         
+        // ==================== UPDATE OWNER PANEL ====================
         function updateOwnerPanel() {
             document.getElementById('totalUsers').textContent = users.length;
             document.getElementById('totalActive').textContent = getActiveUsers().length;
             document.getElementById('totalPending').textContent = pendingRequests.length;
             
+            // USERS LIST
             let usersHtml = '';
             users.forEach((user, index) => {
                 if(user.role !== 'OWNER') {
-                    usersHtml += `<tr><td>${user.username}</td><td>${user.password}</td><td>${user.role}</td><td><button class="btn-delete" onclick="deleteUser(${index})">HAPUS</button></td></tr>`;
+                    usersHtml += `<tr>
+                        <td>${user.username}</td>
+                        <td>${user.password}</td>
+                        <td>${user.role}</td>
+                        <td>${user.expiry || 'PERMANEN'}</td>
+                        <td><button class="btn-delete" onclick="deleteUser(${index})">HAPUS</button></td>
+                    </tr>`;
                 }
             });
             document.getElementById('usersList').innerHTML = usersHtml;
             
+            // ACTIVE USERS
             let activeHtml = '';
             getActiveUsers().forEach(user => {
                 activeHtml += `<div class="active-user-item"><span><span class="online-dot"></span> ${user}</span><span>🟢 ONLINE</span></div>`;
             });
             if(activeHtml === '') activeHtml = '<div style="color:#94A3B8;">TIDAK ADA YANG ONLINE</div>';
             document.getElementById('activeUsersList').innerHTML = activeHtml;
+            
+            // PENDING REQUESTS (FIX BUG)
+            let pendingHtml = '';
+            pendingRequests.forEach((req, index) => {
+                pendingHtml += `
+                    <div class="pending-item">
+                        <div class="pending-info">
+                            <div class="pending-username">${req.username}</div>
+                            <div class="pending-password">🔑 ${req.password}</div>
+                            <div class="pending-date">📅 ${req.requestDate}</div>
+                        </div>
+                        <div class="pending-actions">
+                            <button class="btn-accept" onclick="acceptRequest(${index})">ACCEPT</button>
+                            <button class="btn-unaccept" onclick="rejectRequest(${index})">REJECT</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            if(pendingRequests.length === 0) {
+                pendingHtml = '<div style="color:#94A3B8; text-align:center; padding:20px;">TIDAK ADA PENDING REQUEST</div>';
+            }
+            document.getElementById('pendingList').innerHTML = pendingHtml;
         }
         
+        // ==================== PENDING ACTIONS ====================
+        function acceptRequest(index) {
+            const request = pendingRequests[index];
+            
+            // Hitung tanggal expired berdasarkan pilihan (default PERMANEN)
+            const expiry = 'PERMANEN'; // Bisa diganti sesuai kebutuhan
+            
+            users.push({ 
+                username: request.username, 
+                password: request.password, 
+                role: 'MEMBER', 
+                status: 'approved',
+                expiry: expiry,
+                createdAt: new Date().toISOString()
+            });
+            
+            pendingRequests.splice(index, 1);
+            saveData();
+            updateOwnerPanel();
+            alert(`USER ${request.username} TELAH DI ACC!`);
+        }
+        
+        function rejectRequest(index) {
+            const request = pendingRequests[index];
+            pendingRequests.splice(index, 1);
+            saveData();
+            updateOwnerPanel();
+            alert(`REQUEST ${request.username} DITOLAK!`);
+        }
+        
+        // ==================== USER MANAGEMENT ====================
         function deleteUser(index) {
             if(confirm('YAKIN HAPUS USER INI?')) {
                 users.splice(index, 1);
@@ -1133,16 +1468,28 @@
             const username = document.getElementById('newUsername').value.trim();
             const password = document.getElementById('newPassword').value.trim();
             const role = document.getElementById('newRole').value;
+            const expiry = document.getElementById('newExpiry').value;
+            
             if(!username || !password) { alert('ISI SEMUA GOBLOK!'); return; }
             if(users.find(u => u.username === username)) { alert('USERNAME UDAH ADA!'); return; }
-            users.push({ username: username, password: password, role: role, status: 'approved' });
+            
+            users.push({ 
+                username: username, 
+                password: password, 
+                role: role, 
+                status: 'approved',
+                expiry: expiry,
+                createdAt: new Date().toISOString()
+            });
+            
             saveData();
             updateOwnerPanel();
             document.getElementById('newUsername').value = '';
             document.getElementById('newPassword').value = '';
-            alert(`USER ${username} BERHASIL DIBUAT!`);
+            alert(`USER ${username} BERHASIL DIBUAT! (Exp: ${expiry})`);
         }
         
+        // ==================== DASHBOARD FUNCTIONS ====================
         function showBugNumber() {
             document.getElementById('bugNumberContent').style.display = 'block';
             document.getElementById('bugGroupContent').style.display = 'none';
@@ -1154,19 +1501,33 @@
         }
         
         function sendBug() {
+            if(botStatus === 'MAINTENANCE') {
+                alert('SERVER BUG SEDANG MAINTENANCE!');
+                return;
+            }
+            
             const target = document.getElementById('targetNumber').value;
             const type = document.getElementById('bugType').value;
             if(!target || target === '+62') { alert('ISI NOMOR TARGET DULU GOBLOK!'); return; }
             alert(`🚀 BUG ATTACK SENT!\nTarget: ${target}\nType: ${type}\nStatus: PROCESSING...`);
         }
         
+        // ==================== INIT ====================
         window.onload = function() {
             const savedUser = localStorage.getItem('currentUser');
             if(savedUser) {
                 currentUser = JSON.parse(savedUser);
-                document.getElementById('loginPage').style.display = 'none';
-                document.getElementById('dashboardPage').style.display = 'block';
-                document.getElementById('userRole').textContent = currentUser.role;
+                
+                // CEK EXPIRED SAAT LOAD
+                if(!checkExpiry(currentUser)) {
+                    localStorage.removeItem('currentUser');
+                    alert('AKUN LU SUDAH EXPIRED!');
+                } else {
+                    document.getElementById('loginPage').style.display = 'none';
+                    document.getElementById('dashboardPage').style.display = 'block';
+                    document.getElementById('userRole').textContent = currentUser.role;
+                    document.getElementById('expiryDate').textContent = currentUser.expiry || 'PERMANEN';
+                }
             }
         };
     </script>
