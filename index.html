@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WSP TWIN - BUG VVIP</title>
+    <title>X-Stroms - BUG VVIP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -13,18 +13,74 @@
             font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
         }
         
+        /* THEME STROMS/PETIR */
         .login-page {
-            background: linear-gradient(145deg, #E3F2FD 0%, #BBDEFB 100%);
+            background: linear-gradient(145deg, #0B1A33 0%, #1A2F4A 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             position: relative;
+            overflow: hidden;
+        }
+        
+        /* Background pattern petir */
+        .login-page::before {
+            content: "⚡";
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            font-size: 150px;
+            color: rgba(255, 215, 0, 0.03);
+            transform: rotate(-15deg);
+            z-index: 0;
+            animation: floatLightning 20s infinite linear;
         }
         
         .login-page::after {
-            content: "";
+            content: "⚡⚡⚡";
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            font-size: 200px;
+            color: rgba(255, 215, 0, 0.03);
+            transform: rotate(25deg);
+            z-index: 0;
+            animation: floatLightning 25s infinite linear reverse;
+        }
+        
+        /* Additional lightning bolts */
+        .lightning-bg-1 {
+            position: absolute;
+            top: 20%;
+            right: 15%;
+            font-size: 180px;
+            color: rgba(33, 150, 243, 0.03);
+            transform: rotate(45deg);
+            z-index: 0;
+            animation: floatLightning 18s infinite linear;
+        }
+        
+        .lightning-bg-2 {
+            position: absolute;
+            bottom: 15%;
+            left: 20%;
+            font-size: 220px;
+            color: rgba(255, 215, 0, 0.03);
+            transform: rotate(-30deg);
+            z-index: 0;
+            animation: floatLightning 22s infinite linear reverse;
+        }
+        
+        @keyframes floatLightning {
+            0% { transform: rotate(-15deg) translateY(0); }
+            50% { transform: rotate(-15deg) translateY(-20px); }
+            100% { transform: rotate(-15deg) translateY(0); }
+        }
+        
+        /* Black accent tetap ada */
+        .black-accent {
             position: fixed;
             top: 0;
             right: 0;
@@ -39,40 +95,43 @@
         .login-container {
             max-width: 900px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 20, 35, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 40px;
-            box-shadow: 0 30px 60px rgba(33, 150, 243, 0.3);
+            box-shadow: 0 30px 60px rgba(33, 150, 243, 0.3), 0 0 30px rgba(255, 215, 0, 0.2);
             overflow: hidden;
             position: relative;
             z-index: 1;
             animation: naikBro 0.6s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
         }
         
         .login-header {
-            background: #1976D2;
+            background: #0D2135;
             padding: 20px 30px;
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 3px solid #0D47A1;
+            border-bottom: 3px solid #FFD700;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
         }
         
         .login-header h1 {
             font-size: 28px;
             font-weight: 900;
             text-transform: uppercase;
-            text-shadow: 3px 3px 0 #0D47A1;
+            text-shadow: 3px 3px 0 #0A0F1E;
+            color: #FFD700;
         }
         
         .login-header .badge {
-            background: #0D47A1;
+            background: #0A0F1E;
             padding: 10px 20px;
             border-radius: 50px;
             font-weight: 800;
-            border: 2px solid #FFEB3B;
-            color: #FFEB3B;
+            border: 2px solid #FFD700;
+            color: #FFD700;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -80,59 +139,69 @@
         .login-header .badge:hover {
             transform: scale(1.05);
             background: #2196F3;
+            color: white;
         }
         
         /* BOT STATUS */
-        .bot-status {
+        .bot-status-container {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background: #0F172A;
-            color: white;
-            padding: 12px 25px;
+            z-index: 2000;
+        }
+        
+        .status-card {
+            background: #0D2135;
+            border: 2px solid #FFD700;
             border-radius: 50px;
-            font-weight: 700;
-            font-size: 14px;
-            border: 2px solid #2196F3;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
+            padding: 12px 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            animation: pulse 2s infinite;
+            gap: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
         }
         
-        .bot-status.online {
-            border-color: #4CAF50;
-            background: #1B5E20;
-        }
-        
-        .bot-status.maintenance {
-            border-color: #FF4444;
-            background: #B71C1C;
-        }
-        
-        .status-dot {
-            width: 10px;
-            height: 10px;
+        .status-led {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            display: inline-block;
-        }
-        
-        .status-dot.online {
             background: #4CAF50;
-            box-shadow: 0 0 10px #4CAF50;
+            box-shadow: 0 0 15px #4CAF50;
+            animation: blink 1.5s infinite;
         }
         
-        .status-dot.maintenance {
+        .status-led.maintenance {
             background: #FF4444;
-            box-shadow: 0 0 10px #FF4444;
+            box-shadow: 0 0 15px #FF4444;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .status-text {
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-badge {
+            background: #FFD700;
+            color: #0A0F1E;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .status-badge.maintenance {
+            background: #FF4444;
+            color: white;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
         
         .login-main {
@@ -142,7 +211,7 @@
         
         .login-info {
             flex: 1;
-            background: linear-gradient(135deg, #2196F3, #64B5F6);
+            background: linear-gradient(135deg, #0D2135, #1A2F4A);
             padding: 40px;
             color: white;
             display: flex;
@@ -150,17 +219,19 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            border-right: 1px solid #FFD700;
         }
         
         .login-info::before {
-            content: "BUG";
+            content: "⚡";
             position: absolute;
             top: -20px;
             right: -20px;
-            font-size: 120px;
+            font-size: 150px;
             font-weight: 900;
-            color: rgba(255,255,255,0.1);
+            color: rgba(255, 215, 0, 0.1);
             transform: rotate(15deg);
+            pointer-events: none;
         }
         
         .login-info h2 {
@@ -168,29 +239,31 @@
             font-weight: 900;
             line-height: 1.2;
             margin-bottom: 20px;
-            text-shadow: 4px 4px 0 #0D47A1;
+            text-shadow: 4px 4px 0 #0A0F1E;
         }
         
         .login-info h2 span {
-            color: #FFEB3B;
+            color: #FFD700;
             display: block;
             font-size: 52px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
         
         .login-info .tagline {
-            background: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.3);
             padding: 15px 20px;
             border-radius: 15px;
             font-size: 20px;
             font-weight: 700;
             margin: 20px 0;
-            border-left: 5px solid #FFEB3B;
+            border-left: 5px solid #FFD700;
+            color: #FFD700;
         }
         
         .login-form-panel {
             flex: 1;
             padding: 60px 40px;
-            background: #0F172A;
+            background: #0A0F1E;
             color: white;
             position: relative;
             z-index: 2;
@@ -198,13 +271,13 @@
         }
         
         .login-form-panel::after {
-            content: "VVIP";
+            content: "⚡";
             position: absolute;
             bottom: 20px;
             right: 20px;
-            font-size: 60px;
+            font-size: 80px;
             font-weight: 900;
-            color: rgba(33,150,243,0.1);
+            color: rgba(255, 215, 0, 0.1);
             transform: rotate(-10deg);
         }
         
@@ -218,21 +291,21 @@
         .wsp-logo .logo-icon {
             width: 50px;
             height: 50px;
-            background: #2196F3;
+            background: #FFD700;
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
             font-weight: 900;
-            color: white;
-            box-shadow: 0 5px 0 #0D47A1;
+            color: #0A0F1E;
+            box-shadow: 0 5px 0 #0D2135, 0 0 20px #FFD700;
         }
         
         .wsp-logo h3 {
             font-size: 24px;
             font-weight: 800;
-            background: linear-gradient(135deg, #2196F3, #64B5F6);
+            background: linear-gradient(135deg, #FFD700, #2196F3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -241,7 +314,7 @@
             font-size: 32px;
             font-weight: 900;
             margin-bottom: 10px;
-            color: #2196F3;
+            color: #FFD700;
         }
         
         .login-subtitle {
@@ -249,12 +322,12 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 30px;
-            border-bottom: 2px dashed #2196F3;
+            border-bottom: 2px dashed #FFD700;
             padding-bottom: 20px;
         }
         
         .login-subtitle strong {
-            color: #FFEB3B;
+            color: #FFD700;
             background: #1E293B;
             padding: 5px 10px;
             border-radius: 10px;
@@ -286,15 +359,16 @@
         
         .input-group input:focus {
             outline: none;
-            border-color: #2196F3;
+            border-color: #FFD700;
             background: #2D3A4F;
+            box-shadow: 0 0 10px #FFD700;
         }
         
         .btn-enter {
             width: 100%;
             padding: 20px;
-            background: #2196F3;
-            color: white;
+            background: #FFD700;
+            color: #0A0F1E;
             border: none;
             border-radius: 15px;
             font-size: 22px;
@@ -303,19 +377,19 @@
             cursor: pointer;
             margin: 25px 0 20px 0;
             transition: all 0.3s;
-            box-shadow: 0 10px 0 #0D47A1;
+            box-shadow: 0 10px 0 #0D2135, 0 0 20px #FFD700;
             transform: translateY(-5px);
         }
         
         .btn-enter:hover {
-            background: #42A5F5;
+            background: #FFC800;
             transform: translateY(-2px);
-            box-shadow: 0 7px 0 #0D47A1;
+            box-shadow: 0 7px 0 #0D2135, 0 0 30px #FFD700;
         }
         
         .btn-enter:active {
             transform: translateY(5px);
-            box-shadow: 0 3px 0 #0D47A1;
+            box-shadow: 0 3px 0 #0D2135;
         }
         
         .switch-auth {
@@ -324,12 +398,12 @@
         }
         
         .switch-auth a {
-            color: #2196F3;
+            color: #FFD700;
             text-decoration: none;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            border-bottom: 2px dotted #2196F3;
+            border-bottom: 2px dotted #FFD700;
         }
         
         .login-footer {
@@ -340,24 +414,25 @@
             align-items: center;
             color: #64748B;
             font-weight: 600;
-            border-top: 1px solid #2196F3;
+            border-top: 1px solid #FFD700;
         }
         
         .footer-right {
             font-size: 16px;
             font-weight: 700;
-            color: #2196F3;
+            color: #FFD700;
         }
         
         .footer-right .rapzz {
-            color: #FFEB3B;
+            color: #FFD700;
             background: #1E293B;
             padding: 5px 10px;
             border-radius: 10px;
+            border: 1px solid #FFD700;
         }
         
         .dashboard-page {
-            background: linear-gradient(145deg, #E3F2FD 0%, #BBDEFB 100%);
+            background: linear-gradient(145deg, #0B1A33 0%, #1A2F4A 100%);
             min-height: 100vh;
             padding: 20px;
             position: relative;
@@ -385,21 +460,22 @@
         }
         
         .dashboard-header {
-            background: #1976D2;
+            background: #0D2135;
             padding: 20px 30px;
             border-radius: 30px 30px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
-            border-bottom: 3px solid #0D47A1;
+            border-bottom: 3px solid #FFD700;
         }
         
         .header-left h1 {
             font-size: 28px;
             font-weight: 900;
             text-transform: uppercase;
-            text-shadow: 3px 3px 0 #0D47A1;
+            text-shadow: 3px 3px 0 #0A0F1E;
+            color: #FFD700;
         }
         
         .header-left p {
@@ -414,13 +490,13 @@
         }
         
         .role-badge {
-            background: #0D47A1;
+            background: #0D2135;
             padding: 10px 25px;
             border-radius: 50px;
             font-weight: 800;
             font-size: 16px;
-            border: 2px solid #FFEB3B;
-            color: #FFEB3B;
+            border: 2px solid #FFD700;
+            color: #FFD700;
         }
         
         .expiry-date {
@@ -445,7 +521,7 @@
         }
         
         .dashboard-main {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 20, 35, 0.95);
             backdrop-filter: blur(10px);
             padding: 40px;
             border-radius: 0 0 30px 30px;
@@ -460,12 +536,12 @@
         }
         
         .menu-card {
-            background: #0F172A;
+            background: #0A0F1E;
             border-radius: 20px;
             padding: 30px;
             cursor: pointer;
             transition: all 0.3s;
-            border: 2px solid #2196F3;
+            border: 2px solid #FFD700;
             display: flex;
             align-items: center;
             gap: 20px;
@@ -474,19 +550,20 @@
         
         .menu-card:hover {
             transform: skewX(-5deg) translateY(-5px);
-            border-color: #FFEB3B;
+            border-color: #2196F3;
+            box-shadow: 0 0 30px #FFD700;
         }
         
         .menu-icon {
             width: 60px;
             height: 60px;
-            background: #2196F3;
+            background: #FFD700;
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
-            color: white;
+            color: #0A0F1E;
             transform: skewX(5deg);
         }
         
@@ -495,7 +572,7 @@
         }
         
         .menu-text h2 {
-            color: #2196F3;
+            color: #FFD700;
             font-size: 28px;
             font-weight: 900;
             margin-bottom: 5px;
@@ -506,14 +583,14 @@
         }
         
         .content-area {
-            background: #0F172A;
+            background: #0A0F1E;
             border-radius: 30px;
             padding: 30px;
-            border: 2px solid #2196F3;
+            border: 2px solid #FFD700;
         }
         
         .content-title {
-            color: #2196F3;
+            color: #FFD700;
             font-size: 24px;
             font-weight: 800;
             margin-bottom: 30px;
@@ -537,11 +614,16 @@
             transform: skewX(-2deg);
         }
         
+        .bug-select:focus {
+            border-color: #FFD700;
+            outline: none;
+        }
+        
         .send-btn {
             width: 100%;
             padding: 20px;
-            background: #2196F3;
-            color: white;
+            background: #FFD700;
+            color: #0A0F1E;
             border: none;
             border-radius: 15px;
             font-size: 20px;
@@ -553,33 +635,33 @@
             justify-content: center;
             gap: 15px;
             transform: skewX(-3deg);
-            box-shadow: 0 10px 0 #0D47A1;
+            box-shadow: 0 10px 0 #0D2135;
         }
         
         .send-btn:hover {
-            background: #42A5F5;
+            background: #FFC800;
             transform: skewX(-3deg) translateY(-3px);
-            box-shadow: 0 13px 0 #0D47A1;
+            box-shadow: 0 13px 0 #0D2135, 0 0 30px #FFD700;
         }
         
         .coming-soon {
             text-align: center;
             padding: 80px 20px;
-            color: #2196F3;
+            color: #FFD700;
             font-size: 32px;
             font-weight: 900;
-            background: #1E293B;
+            background: #0A0F1E;
             border-radius: 20px;
-            border: 2px dashed #2196F3;
+            border: 2px dashed #FFD700;
         }
         
         .coming-soon i {
             font-size: 60px;
-            color: #FFEB3B;
+            color: #FFD700;
         }
         
         .owner-panel-page {
-            background: linear-gradient(145deg, #E3F2FD 0%, #BBDEFB 100%);
+            background: linear-gradient(145deg, #0B1A33 0%, #1A2F4A 100%);
             min-height: 100vh;
             padding: 20px;
             position: relative;
@@ -607,25 +689,26 @@
         }
         
         .owner-header {
-            background: #1976D2;
+            background: #0D2135;
             padding: 20px 30px;
             border-radius: 30px 30px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
-            border-bottom: 3px solid #0D47A1;
+            border-bottom: 3px solid #FFD700;
         }
         
         .owner-header h1 {
             font-size: 28px;
             font-weight: 900;
             text-transform: uppercase;
-            text-shadow: 3px 3px 0 #0D47A1;
+            text-shadow: 3px 3px 0 #0A0F1E;
+            color: #FFD700;
         }
         
         .owner-main {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 20, 35, 0.95);
             backdrop-filter: blur(10px);
             padding: 40px;
             border-radius: 0 0 30px 30px;
@@ -639,17 +722,17 @@
         }
         
         .owner-stat-box {
-            background: #0F172A;
+            background: #0A0F1E;
             padding: 20px;
             border-radius: 15px;
-            border: 2px solid #2196F3;
+            border: 2px solid #FFD700;
             color: white;
         }
         
         .owner-stat-box .number {
             font-size: 36px;
             font-weight: 900;
-            color: #FFEB3B;
+            color: #FFD700;
         }
         
         .owner-stat-box .label {
@@ -658,15 +741,15 @@
         }
         
         .owner-section {
-            background: #0F172A;
+            background: #0A0F1E;
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 30px;
-            border: 2px solid #2196F3;
+            border: 2px solid #FFD700;
         }
         
         .owner-section h2 {
-            color: #2196F3;
+            color: #FFD700;
             font-size: 24px;
             font-weight: 800;
             margin-bottom: 20px;
@@ -684,7 +767,7 @@
             text-align: left;
             padding: 15px;
             background: #1E293B;
-            color: #2196F3;
+            color: #FFD700;
             font-weight: 700;
         }
         
@@ -740,11 +823,12 @@
         
         .create-user-form button {
             padding: 10px 20px;
-            background: #2196F3;
-            color: white;
+            background: #FFD700;
+            color: #0A0F1E;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: 700;
         }
         
         .active-users-list {
@@ -797,11 +881,11 @@
         
         .pending-username {
             font-weight: 700;
-            color: #2196F3;
+            color: #FFD700;
         }
         
         .pending-password {
-            color: #FFEB3B;
+            color: #FFD700;
             font-size: 12px;
         }
         
@@ -833,17 +917,17 @@
         }
         
         .owner-login-card {
-            background: #0F172A;
+            background: #0A0F1E;
             padding: 40px;
             border-radius: 30px;
             width: 90%;
             max-width: 400px;
-            border: 3px solid #2196F3;
+            border: 3px solid #FFD700;
             transform: skewX(-3deg);
         }
         
         .owner-login-card h2 {
-            color: #2196F3;
+            color: #FFD700;
             font-size: 32px;
             font-weight: 900;
             margin-bottom: 30px;
@@ -859,11 +943,13 @@
         
         .owner-login-card .btn-enter {
             transform: skewX(3deg) translateY(-5px);
+            background: #FFD700;
+            color: #0A0F1E;
         }
         
         .back-to-dashboard {
-            background: #2196F3;
-            color: white;
+            background: #FFD700;
+            color: #0A0F1E;
             border: none;
             padding: 10px 20px;
             border-radius: 10px;
@@ -878,73 +964,55 @@
         
         .owner-badge-btn:hover {
             transform: scale(1.1);
-            background: #FFEB3B !important;
-            color: #0D47A1 !important;
+            background: #FFD700 !important;
+            color: #0A0F1E !important;
         }
         
-        /* BOT STATUS */
-        .bot-status-container {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 2000;
+        /* Lightning background elements */
+        .lightning-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
         
-        .status-card {
-            background: #0F172A;
-            border: 2px solid #2196F3;
-            border-radius: 50px;
-            padding: 12px 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            backdrop-filter: blur(5px);
+        .lightning-bg i {
+            position: absolute;
+            color: rgba(255, 215, 0, 0.03);
+            font-size: 120px;
         }
         
-        .status-led {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #4CAF50;
-            box-shadow: 0 0 15px #4CAF50;
-            animation: blink 1.5s infinite;
+        /* Decorative lightning bolts */
+        .bolt-1 {
+            top: 15%;
+            left: 5%;
+            transform: rotate(-20deg);
         }
         
-        .status-led.maintenance {
-            background: #FF4444;
-            box-shadow: 0 0 15px #FF4444;
+        .bolt-2 {
+            bottom: 10%;
+            right: 8%;
+            transform: rotate(25deg) scaleX(-1);
         }
         
-        .status-text {
-            color: white;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-        }
-        
-        .status-badge {
-            background: #2196F3;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-        
-        .status-badge.maintenance {
-            background: #FF4444;
-        }
-        
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+        .bolt-3 {
+            top: 40%;
+            right: 15%;
+            transform: rotate(45deg);
         }
     </style>
 </head>
 <body>
+    <!-- Lightning background elements -->
+    <div class="lightning-bg">
+        <i class="fas fa-bolt bolt-1"></i>
+        <i class="fas fa-bolt bolt-2"></i>
+        <i class="fas fa-bolt bolt-3"></i>
+    </div>
+    
+    <!-- Black accent -->
+    <div class="black-accent"></div>
+    
     <!-- BOT STATUS -->
     <div class="bot-status-container">
         <div class="status-card" id="botStatus">
@@ -970,24 +1038,25 @@
         </div>
     </div>
     
+    <!-- LOGIN PAGE -->
     <div class="login-page" id="loginPage">
         <div class="login-container">
             <div class="login-header">
-                <h1>WSP TWIN</h1>
+                <h1>X-Stroms</h1>
                 <div class="badge owner-badge-btn" id="ownerBadgeBtn" onclick="showOwnerLogin()">BUG VVIP</div>
             </div>
             
             <div class="login-main">
                 <div class="login-info">
-                    <h2><span>WSP TWIN</span>BUG VVIP 2026</h2>
+                    <h2><span>HELLO WORLD</span>WELCOME BACK TO X-Stroms</h2>
                     <div class="tagline">🔥 LANSUNG GAS BRO! 🔥</div>
-                    <div style="background:#0D47A1; padding:15px; border-radius:15px; text-align:center; border:1px solid #FFEB3B; color:#FFEB3B;">⚡ POWERED BY RAPZZXPLOIT ⚡</div>
+                    <div style="background:#0D2135; padding:15px; border-radius:15px; text-align:center; border:1px solid #FFD700; color:#FFD700;">⚡ POWERED BY RAPZZXPLOIT ⚡</div>
                 </div>
                 
                 <div class="login-form-panel">
                     <div class="wsp-logo">
                         <div class="logo-icon">⚡</div>
-                        <h3>WSP TWIN</h3>
+                        <h3>X-Stroms</h3>
                     </div>
                     
                     <h2>LOGIN GOBLOK</h2>
@@ -1009,14 +1078,14 @@
                         <a onclick="showRegister()">BELUM PUNYA? DAFTAR DULU GOBLOK →</a>
                     </div>
                     
-                    <div style="background:#1E293B; padding:15px; border-radius:12px; margin-top:20px; border-left:5px solid #FFEB3B;">
-                        <p style="color:#FFEB3B; font-weight:600;">⚠️ JANGAN LUPA PASSWORD NYA</p>
+                    <div style="background:#1E293B; padding:15px; border-radius:12px; margin-top:20px; border-left:5px solid #FFD700;">
+                        <p style="color:#FFD700; font-weight:600;">⚠️ JANGAN LUPA PASSWORD NYA</p>
                     </div>
                 </div>
             </div>
             
-            <div id="registerSection" style="display: none; background:#0F172A; padding:30px; border-top:1px solid #2196F3;">
-                <h2 style="color:#2196F3; margin-bottom:20px;">REGISTER GOBLOK</h2>
+            <div id="registerSection" style="display: none; background:#0A0F1E; padding:30px; border-top:1px solid #FFD700;">
+                <h2 style="color:#FFD700; margin-bottom:20px;">REGISTER SAYANKK 🥰</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap:20px;">
                     <div class="input-group">
                         <label>USERNAME</label>
@@ -1033,9 +1102,9 @@
                 </div>
             </div>
             
-            <div id="waitingApproval" style="display: none; background:#0F172A; padding:40px; text-align:center; border-top:1px solid #2196F3;">
-                <i class="fas fa-clock" style="font-size:60px; color:#FFEB3B; margin-bottom:20px;"></i>
-                <h2 style="color:#2196F3; margin-bottom:15px;">MENUNGGU PERSETUJUAN OWNER</h2>
+            <div id="waitingApproval" style="display: none; background:#0A0F1E; padding:40px; text-align:center; border-top:1px solid #FFD700;">
+                <i class="fas fa-clock" style="font-size:60px; color:#FFD700; margin-bottom:20px;"></i>
+                <h2 style="color:#FFD700; margin-bottom:15px;">MENUNGGU PERSETUJUAN OWNER</h2>
                 <p style="color:#94A3B8; font-size:18px;">Sabarrr goblok, lu harus di accept dulu sama owner biar bisa login</p>
             </div>
             
@@ -1046,11 +1115,12 @@
         </div>
     </div>
     
+    <!-- DASHBOARD PAGE -->
     <div class="dashboard-page" id="dashboardPage">
         <div class="dashboard-container">
             <div class="dashboard-header">
                 <div class="header-left">
-                    <h1>WSP TWIN BUG VVIP</h1>
+                    <h1>X-Stroms BUG VVIP</h1>
                     <p><i class="fas fa-calendar-alt"></i> Member since: <span id="memberSince">10/03/2026</span></p>
                 </div>
                 <div class="header-right">
@@ -1104,7 +1174,7 @@
     <div class="owner-panel-page" id="ownerPanelPage">
         <div class="owner-container">
             <div class="owner-header">
-                <h1><i class="fas fa-crown" style="color:#FFEB3B;"></i> OWNER PANEL</h1>
+                <h1><i class="fas fa-crown" style="color:#FFD700;"></i> OWNER PANEL</h1>
                 <button class="back-to-dashboard" onclick="backToDashboard()"><i class="fas fa-arrow-left"></i> BACK</button>
             </div>
             
@@ -1167,9 +1237,9 @@
                     <div class="active-users-list" id="activeUsersList"></div>
                 </div>
                 
-                <!-- PENDING REQUESTS (FIX BUG) -->
+                <!-- PENDING REQUESTS -->
                 <div class="owner-section">
-                    <h2><i class="fas fa-clock" style="color:#FFEB3B;"></i> PENDING REGISTRATION</h2>
+                    <h2><i class="fas fa-clock" style="color:#FFD700;"></i> PENDING REGISTRATION</h2>
                     <div class="pending-list" id="pendingList">
                         <!-- Pending requests akan muncul di sini -->
                     </div>
@@ -1210,7 +1280,6 @@
             }
         }
         
-        // Panggil pertama kali
         updateBotStatus();
         
         // ==================== FUNGSI DASAR ====================
@@ -1303,7 +1372,6 @@
             const user = users.find(u => u.username === username && u.password === password);
             
             if(user) {
-                // CEK EXPIRED
                 if(!checkExpiry(user)) {
                     alert('AKUN LU SUDAH EXPIRED! HUBUNGI OWNER');
                     return;
@@ -1317,7 +1385,7 @@
                     
                     const roleBadge = document.getElementById('roleBadge');
                     if(user.role === 'OWNER') {
-                        roleBadge.style.background = '#0D47A1';
+                        roleBadge.style.background = '#0D2135';
                     } else if(user.role === 'ADMINS') {
                         roleBadge.style.background = '#7B1FA2';
                     } else {
@@ -1378,7 +1446,6 @@
             document.getElementById('totalActive').textContent = getActiveUsers().length;
             document.getElementById('totalPending').textContent = pendingRequests.length;
             
-            // USERS LIST
             let usersHtml = '';
             users.forEach((user, index) => {
                 if(user.role !== 'OWNER') {
@@ -1393,7 +1460,6 @@
             });
             document.getElementById('usersList').innerHTML = usersHtml;
             
-            // ACTIVE USERS
             let activeHtml = '';
             getActiveUsers().forEach(user => {
                 activeHtml += `<div class="active-user-item"><span><span class="online-dot"></span> ${user}</span><span>🟢 ONLINE</span></div>`;
@@ -1401,7 +1467,6 @@
             if(activeHtml === '') activeHtml = '<div style="color:#94A3B8;">TIDAK ADA YANG ONLINE</div>';
             document.getElementById('activeUsersList').innerHTML = activeHtml;
             
-            // PENDING REQUESTS (FIX BUG)
             let pendingHtml = '';
             pendingRequests.forEach((req, index) => {
                 pendingHtml += `
@@ -1425,12 +1490,9 @@
             document.getElementById('pendingList').innerHTML = pendingHtml;
         }
         
-        // ==================== PENDING ACTIONS ====================
         function acceptRequest(index) {
             const request = pendingRequests[index];
-            
-            // Hitung tanggal expired berdasarkan pilihan (default PERMANEN)
-            const expiry = 'PERMANEN'; // Bisa diganti sesuai kebutuhan
+            const expiry = 'PERMANEN';
             
             users.push({ 
                 username: request.username, 
@@ -1455,7 +1517,6 @@
             alert(`REQUEST ${request.username} DITOLAK!`);
         }
         
-        // ==================== USER MANAGEMENT ====================
         function deleteUser(index) {
             if(confirm('YAKIN HAPUS USER INI?')) {
                 users.splice(index, 1);
@@ -1489,7 +1550,6 @@
             alert(`USER ${username} BERHASIL DIBUAT! (Exp: ${expiry})`);
         }
         
-        // ==================== DASHBOARD FUNCTIONS ====================
         function showBugNumber() {
             document.getElementById('bugNumberContent').style.display = 'block';
             document.getElementById('bugGroupContent').style.display = 'none';
@@ -1512,13 +1572,11 @@
             alert(`🚀 BUG ATTACK SENT!\nTarget: ${target}\nType: ${type}\nStatus: PROCESSING...`);
         }
         
-        // ==================== INIT ====================
         window.onload = function() {
             const savedUser = localStorage.getItem('currentUser');
             if(savedUser) {
                 currentUser = JSON.parse(savedUser);
                 
-                // CEK EXPIRED SAAT LOAD
                 if(!checkExpiry(currentUser)) {
                     localStorage.removeItem('currentUser');
                     alert('AKUN LU SUDAH EXPIRED!');
@@ -1532,4 +1590,4 @@
         };
     </script>
 </body>
-                </html>
+            </html>
