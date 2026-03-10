@@ -73,6 +73,13 @@
             font-weight: 800;
             border: 2px solid #FFEB3B;
             color: #FFEB3B;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .login-header .badge:hover {
+            transform: scale(1.05);
+            background: #2196F3;
         }
         
         .login-main {
@@ -737,34 +744,6 @@
             transform: skewX(3deg) translateY(-5px);
         }
         
-        .owner-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            background: #00C853;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            z-index: 2000;
-            border: 2px solid #FFEB3B;
-            box-shadow: 0 0 15px #00C853;
-            text-align: center;
-            line-height: 1.2;
-            padding: 5px;
-            display: none;
-        }
-        
-        .owner-btn.show {
-            display: flex;
-        }
-        
         .back-to-dashboard {
             background: #2196F3;
             color: white;
@@ -774,13 +753,23 @@
             cursor: pointer;
             font-weight: 700;
         }
+        
+        /* TOMBOL OWNER DI "BUG VVIP" */
+        .owner-badge-btn {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .owner-badge-btn:hover {
+            transform: scale(1.1);
+            background: #FFEB3B !important;
+            color: #0D47A1 !important;
+        }
     </style>
 </head>
 <body>
-    <!-- TOMBOL OWNER PANEL LINGKARAN HIJAU -->
-    <div class="owner-btn" id="ownerBtn" onclick="showOwnerLogin()">
-        OWNER<br>PANEL<br>☣️
-    </div>
+    <!-- TOMBOL OWNER ADA DI "BUG VVIP" (POJOK KANAN ATAS) -->
+    <!-- Bukan tombol terpisah, tapi badge "BUG VVIP" yang udah ada dikasih event klik -->
     
     <div class="owner-login-modal" id="ownerLoginModal">
         <div class="owner-login-card">
@@ -801,7 +790,8 @@
         <div class="login-container">
             <div class="login-header">
                 <h1>WSP TWIN</h1>
-                <div class="badge">BUG VVIP</div>
+                <!-- INI TOMBOL OWNER NYA! "BUG VVIP" bisa diklik -->
+                <div class="badge owner-badge-btn" id="ownerBadgeBtn" onclick="showOwnerLogin()">BUG VVIP</div>
             </div>
             
             <div class="login-main">
@@ -1061,7 +1051,6 @@
                     const roleBadge = document.getElementById('roleBadge');
                     if(user.role === 'OWNER') {
                         roleBadge.style.background = '#0D47A1';
-                        document.getElementById('ownerBtn').classList.add('show');
                     } else if(user.role === 'ADMINS') {
                         roleBadge.style.background = '#7B1FA2';
                     } else {
@@ -1081,7 +1070,6 @@
                 document.getElementById('dashboardPage').style.display = 'none';
                 document.getElementById('ownerPanelPage').style.display = 'none';
                 document.getElementById('loginPage').style.display = 'block';
-                document.getElementById('ownerBtn').classList.remove('show');
                 showLogin();
             }
         }
@@ -1099,6 +1087,7 @@
                 document.getElementById('ownerUsername').value = '';
                 document.getElementById('ownerPassword').value = '';
                 updateOwnerPanel();
+                document.getElementById('loginPage').style.display = 'none';
                 document.getElementById('dashboardPage').style.display = 'none';
                 document.getElementById('ownerPanelPage').style.display = 'block';
             } else {
@@ -1108,7 +1097,7 @@
         
         function backToDashboard() {
             document.getElementById('ownerPanelPage').style.display = 'none';
-            document.getElementById('dashboardPage').style.display = 'block';
+            document.getElementById('loginPage').style.display = 'block';
         }
         
         function updateOwnerPanel() {
@@ -1175,7 +1164,6 @@
             const savedUser = localStorage.getItem('currentUser');
             if(savedUser) {
                 currentUser = JSON.parse(savedUser);
-                if(currentUser.role === 'OWNER') document.getElementById('ownerBtn').classList.add('show');
                 document.getElementById('loginPage').style.display = 'none';
                 document.getElementById('dashboardPage').style.display = 'block';
                 document.getElementById('userRole').textContent = currentUser.role;
