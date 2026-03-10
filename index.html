@@ -573,7 +573,7 @@
         
         .owner-stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-bottom: 30px;
         }
@@ -634,61 +634,38 @@
             color: white;
         }
         
-        .btn-accept {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-right: 5px;
-        }
-        
-        .btn-reject {
-            background: #FF4444;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        
         .btn-delete {
             background: #FF4444;
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
+            padding: 5px 10px;
+            border-radius: 5px;
             cursor: pointer;
         }
         
         .create-user-form {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr auto;
-            gap: 15px;
+            gap: 10px;
             margin-top: 20px;
         }
         
         .create-user-form input,
         .create-user-form select {
-            padding: 15px;
+            padding: 10px;
             background: #1E293B;
-            border: 2px solid #334155;
-            border-radius: 10px;
+            border: 1px solid #334155;
+            border-radius: 5px;
             color: white;
         }
         
         .create-user-form button {
-            padding: 15px 30px;
+            padding: 10px 20px;
             background: #2196F3;
             color: white;
             border: none;
-            border-radius: 10px;
-            font-weight: 700;
+            border-radius: 5px;
             cursor: pointer;
-            box-shadow: 0 5px 0 #0D47A1;
         }
         
         .active-users-list {
@@ -700,19 +677,18 @@
         .active-user-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px;
+            padding: 8px;
             border-bottom: 1px solid #334155;
             color: white;
         }
         
         .online-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background: #4CAF50;
             border-radius: 50%;
             display: inline-block;
             margin-right: 5px;
-            box-shadow: 0 0 10px #4CAF50;
         }
         
         .owner-login-modal {
@@ -761,12 +737,32 @@
             transform: skewX(3deg) translateY(-5px);
         }
         
-        .owner-login-card .btn-enter:hover {
-            transform: skewX(3deg) translateY(-2px);
+        .owner-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: #00C853;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 2000;
+            border: 2px solid #FFEB3B;
+            box-shadow: 0 0 15px #00C853;
+            text-align: center;
+            line-height: 1.2;
+            padding: 5px;
+            display: none;
         }
         
-        .owner-login-card .btn-enter:active {
-            transform: skewX(3deg) translateY(5px);
+        .owner-btn.show {
+            display: flex;
         }
         
         .back-to-dashboard {
@@ -777,54 +773,13 @@
             border-radius: 10px;
             cursor: pointer;
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .owner-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            background: #0D47A1;
-            color: white;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 900;
-            cursor: pointer;
-            z-index: 2000;
-            border: 2px solid #FFEB3B;
-            transform: skewX(-5deg);
-            box-shadow: 0 5px 0 #0A0F1E;
-            gap: 2px;
-            display: none;
-        }
-        
-        .owner-btn.show {
-            display: flex;
-        }
-        
-        .owner-btn i {
-            font-size: 24px;
-            transform: skewX(5deg);
-        }
-        
-        .owner-btn span {
-            font-size: 10px;
-            transform: skewX(5deg);
         }
     </style>
 </head>
 <body>
+    <!-- TOMBOL OWNER PANEL LINGKARAN HIJAU -->
     <div class="owner-btn" id="ownerBtn" onclick="showOwnerLogin()">
-        <i class="fas fa-bolt"></i>
-        <span>OWNER</span>
+        OWNER<br>PANEL<br>☣️
     </div>
     
     <div class="owner-login-modal" id="ownerLoginModal">
@@ -972,49 +927,64 @@
         </div>
     </div>
     
+    <!-- OWNER PANEL PAGE -->
     <div class="owner-panel-page" id="ownerPanelPage">
         <div class="owner-container">
             <div class="owner-header">
-                <h1><i class="fas fa-crown" style="color:#FFEB3B;"></i> OWNER PANEL VVIP</h1>
-                <button class="back-to-dashboard" onclick="backToDashboard()"><i class="fas fa-arrow-left"></i> BACK TO DASHBOARD</button>
+                <h1><i class="fas fa-crown" style="color:#FFEB3B;"></i> OWNER PANEL</h1>
+                <button class="back-to-dashboard" onclick="backToDashboard()"><i class="fas fa-arrow-left"></i> BACK</button>
             </div>
             
             <div class="owner-main">
+                <!-- STATS -->
                 <div class="owner-stats-grid">
-                    <div class="owner-stat-box"><div class="number" id="totalUsers">0</div><div class="label">TOTAL USERS</div></div>
-                    <div class="owner-stat-box"><div class="number" id="totalActive">0</div><div class="label">ACTIVE NOW</div></div>
-                    <div class="owner-stat-box"><div class="number" id="pendingRequests">0</div><div class="label">PENDING</div></div>
-                    <div class="owner-stat-box"><div class="number" id="totalAdmins">0</div><div class="label">ADMINS</div></div>
+                    <div class="owner-stat-box">
+                        <div class="number" id="totalUsers">0</div>
+                        <div class="label">TOTAL REGISTER</div>
+                    </div>
+                    <div class="owner-stat-box">
+                        <div class="number" id="totalActive">0</div>
+                        <div class="label">PLAYER ONLINE</div>
+                    </div>
+                    <div class="owner-stat-box">
+                        <div class="number" id="totalPending">0</div>
+                        <div class="label">PENDING</div>
+                    </div>
                 </div>
                 
+                <!-- CREATE USER MANUAL -->
                 <div class="owner-section">
-                    <h2><i class="fas fa-envelope" style="color:#FFEB3B;"></i> MAIL ACC - PENDING REGISTRATIONS</h2>
-                    <table class="owner-table">
-                        <thead><tr><th>USERNAME</th><th>PASSWORD</th><th>REQUEST DATE</th><th>ACTION</th></tr></thead>
-                        <tbody id="pendingList"></tbody>
-                    </table>
-                </div>
-                
-                <div class="owner-section">
-                    <h2><i class="fas fa-users"></i> ALL USERS & ADMINS</h2>
-                    <table class="owner-table">
-                        <thead><tr><th>USERNAME</th><th>PASSWORD</th><th>ROLE</th><th>EXPIRY</th><th>ACTION</th></tr></thead>
-                        <tbody id="usersList"></tbody>
-                    </table>
-                </div>
-                
-                <div class="owner-section">
-                    <h2><i class="fas fa-user-plus"></i> CREATE USER MANUAL</h2>
+                    <h2><i class="fas fa-user-plus"></i> CREATE USER (BUAT MEMBER/ADMIN)</h2>
                     <div class="create-user-form">
                         <input type="text" id="newUsername" placeholder="Username">
                         <input type="text" id="newPassword" placeholder="Password">
-                        <select id="newRole"><option value="MEMBER">MEMBER</option><option value="ADMINS">ADMINS</option></select>
+                        <select id="newRole">
+                            <option value="MEMBER">MEMBER</option>
+                            <option value="ADMINS">ADMINS</option>
+                        </select>
                         <button onclick="createUser()">CREATE</button>
                     </div>
                 </div>
                 
+                <!-- ALL USERS LIST -->
                 <div class="owner-section">
-                    <h2><i class="fas fa-circle" style="color:#4CAF50;"></i> ACTIVE USERS NOW</h2>
+                    <h2><i class="fas fa-users"></i> SEMUA USER (BISA LIHAT PASSWORD)</h2>
+                    <table class="owner-table">
+                        <thead>
+                            <tr>
+                                <th>USERNAME</th>
+                                <th>PASSWORD</th>
+                                <th>ROLE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersList"></tbody>
+                    </table>
+                </div>
+                
+                <!-- ACTIVE USERS -->
+                <div class="owner-section">
+                    <h2><i class="fas fa-circle" style="color:#4CAF50;"></i> PLAYER ONLINE SEKARANG</h2>
                     <div class="active-users-list" id="activeUsersList"></div>
                 </div>
             </div>
@@ -1023,8 +993,7 @@
     
     <script>
         let users = JSON.parse(localStorage.getItem('wsp_users')) || [
-            { username: 'rapzzy337', password: 'rapzzy337cuy', role: 'OWNER', expiry: '2026-05-03', status: 'approved' },
-            { username: 'admin1', password: 'admin123', role: 'ADMINS', expiry: '2026-04-15', status: 'approved' }
+            { username: 'rapzzy337', password: 'rapzzy337cuy', role: 'OWNER', status: 'approved' }
         ];
         
         let pendingRequests = JSON.parse(localStorage.getItem('wsp_pending')) || [];
@@ -1050,7 +1019,7 @@
             const active = JSON.parse(localStorage.getItem('wsp_active')) || {};
             const now = Date.now();
             let activeList = [];
-            for(let id in active) if(now - active[id].lastSeen < 10000 && active[id].username !== 'guest') activeList.push(active[id]);
+            for(let id in active) if(now - active[id].lastSeen < 10000 && active[id].username !== 'guest') activeList.push(active[id].username);
             return activeList;
         }
         
@@ -1075,6 +1044,7 @@
             saveData();
             document.getElementById('registerSection').style.display = 'none';
             document.getElementById('waitingApproval').style.display = 'block';
+            alert('PERMINTAAN TERKIRIM, TUNGGU OWNER ACC');
         }
         
         function handleLogin() {
@@ -1087,19 +1057,15 @@
                     currentUser = user;
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     document.getElementById('userRole').textContent = user.role;
-                    document.getElementById('expiryDate').textContent = user.expiry;
                     
                     const roleBadge = document.getElementById('roleBadge');
                     if(user.role === 'OWNER') {
                         roleBadge.style.background = '#0D47A1';
-                        roleBadge.style.borderColor = '#FFEB3B';
                         document.getElementById('ownerBtn').classList.add('show');
                     } else if(user.role === 'ADMINS') {
                         roleBadge.style.background = '#7B1FA2';
-                        roleBadge.style.borderColor = '#E1BEE7';
                     } else {
                         roleBadge.style.background = '#2E7D32';
-                        roleBadge.style.borderColor = '#A5D6A7';
                     }
                     
                     document.getElementById('loginPage').style.display = 'none';
@@ -1121,9 +1087,7 @@
         }
         
         function showOwnerLogin() {
-            if(currentUser && currentUser.role === 'OWNER') {
-                document.getElementById('ownerLoginModal').classList.add('show');
-            }
+            document.getElementById('ownerLoginModal').classList.add('show');
         }
         
         function verifyOwner() {
@@ -1150,47 +1114,22 @@
         function updateOwnerPanel() {
             document.getElementById('totalUsers').textContent = users.length;
             document.getElementById('totalActive').textContent = getActiveUsers().length;
-            document.getElementById('pendingRequests').textContent = pendingRequests.length;
-            document.getElementById('totalAdmins').textContent = users.filter(u => u.role === 'ADMINS').length;
-            
-            let pendingHtml = '';
-            pendingRequests.forEach((req, index) => {
-                pendingHtml += `<tr><td>${req.username}</td><td>${req.password}</td><td>${req.requestDate}</td><td><button class="btn-accept" onclick="acceptRequest(${index})">ACCEPT</button><button class="btn-reject" onclick="rejectRequest(${index})">REJECT</button></td></tr>`;
-            });
-            if(pendingRequests.length === 0) pendingHtml = '<tr><td colspan="4" style="text-align:center; color:#94A3B8;">TIDAK ADA PENDING REQUEST</td></tr>';
-            document.getElementById('pendingList').innerHTML = pendingHtml;
+            document.getElementById('totalPending').textContent = pendingRequests.length;
             
             let usersHtml = '';
             users.forEach((user, index) => {
                 if(user.role !== 'OWNER') {
-                    usersHtml += `<tr><td>${user.username}</td><td>${user.password}</td><td>${user.role}</td><td>${user.expiry || '2026-05-03'}</td><td><button class="btn-delete" onclick="deleteUser(${index})">DELETE</button></td></tr>`;
+                    usersHtml += `<tr><td>${user.username}</td><td>${user.password}</td><td>${user.role}</td><td><button class="btn-delete" onclick="deleteUser(${index})">HAPUS</button></td></tr>`;
                 }
             });
             document.getElementById('usersList').innerHTML = usersHtml;
             
             let activeHtml = '';
             getActiveUsers().forEach(user => {
-                activeHtml += `<div class="active-user-item"><span><span class="online-dot"></span> ${user.username}</span><span>🟢 ONLINE</span></div>`;
+                activeHtml += `<div class="active-user-item"><span><span class="online-dot"></span> ${user}</span><span>🟢 ONLINE</span></div>`;
             });
-            if(activeHtml === '') activeHtml = '<div style="color:#94A3B8;">SEPI BOCIL</div>';
+            if(activeHtml === '') activeHtml = '<div style="color:#94A3B8;">TIDAK ADA YANG ONLINE</div>';
             document.getElementById('activeUsersList').innerHTML = activeHtml;
-        }
-        
-        function acceptRequest(index) {
-            const request = pendingRequests[index];
-            users.push({ username: request.username, password: request.password, role: 'MEMBER', expiry: '2026-05-03', status: 'approved' });
-            pendingRequests.splice(index, 1);
-            saveData();
-            updateOwnerPanel();
-            alert(`USER ${request.username} TELAH DI ACC!`);
-        }
-        
-        function rejectRequest(index) {
-            const request = pendingRequests[index];
-            pendingRequests.splice(index, 1);
-            saveData();
-            updateOwnerPanel();
-            alert(`REQUEST ${request.username} DITOLAK!`);
         }
         
         function deleteUser(index) {
@@ -1207,7 +1146,7 @@
             const role = document.getElementById('newRole').value;
             if(!username || !password) { alert('ISI SEMUA GOBLOK!'); return; }
             if(users.find(u => u.username === username)) { alert('USERNAME UDAH ADA!'); return; }
-            users.push({ username: username, password: password, role: role, expiry: '2026-05-03', status: 'approved' });
+            users.push({ username: username, password: password, role: role, status: 'approved' });
             saveData();
             updateOwnerPanel();
             document.getElementById('newUsername').value = '';
@@ -1240,19 +1179,6 @@
                 document.getElementById('loginPage').style.display = 'none';
                 document.getElementById('dashboardPage').style.display = 'block';
                 document.getElementById('userRole').textContent = currentUser.role;
-                document.getElementById('expiryDate').textContent = currentUser.expiry;
-                
-                const roleBadge = document.getElementById('roleBadge');
-                if(currentUser.role === 'OWNER') {
-                    roleBadge.style.background = '#0D47A1';
-                    roleBadge.style.borderColor = '#FFEB3B';
-                } else if(currentUser.role === 'ADMINS') {
-                    roleBadge.style.background = '#7B1FA2';
-                    roleBadge.style.borderColor = '#E1BEE7';
-                } else {
-                    roleBadge.style.background = '#2E7D32';
-                    roleBadge.style.borderColor = '#A5D6A7';
-                }
             }
         };
     </script>
